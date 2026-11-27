@@ -1,0 +1,149 @@
+{
+  "version": {
+    "major": 2,
+    "minor": 0
+  },
+  "format": {
+    "name": "mecha",
+    "version": {
+      "major": 1,
+      "minor": 0
+    }
+  },
+  "id": "aefab132-0420-8d18-8b55-fdc4b2287e9f",
+  "revision": 9,
+  "name": "HORUS Pegasus head",
+  "author": {
+    "ai": 1
+  },
+  "keywords": [],
+  "shapes": [
+    {
+      "id": "14b58df2-2d4f-8a2c-8af4-2da465589d55",
+      "use": "sphere",
+      "name": "Cranium",
+      "position": [
+        0,
+        4.2,
+        0.7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        13.3,
+        18.9,
+        11.9
+      ],
+      "grain": {
+        "angle": 0,
+        "zoom": 0.7,
+        "mirror": false
+      }
+    },
+    {
+      "id": "97645169-e050-4763-bae0-e4005ae851fb",
+      "use": "taper",
+      "name": "Taper",
+      "position": [
+        0,
+        -6.5,
+        -5.64
+      ],
+      "rotation": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        8,
+        10,
+        20
+      ],
+      "at": "14b58df2-2d4f-8a2c-8af4-2da465589d55/top",
+      "paint": {
+        "primary": "accent"
+      }
+    }
+  ],
+  "sockets": [
+    {
+      "name": "jaw",
+      "position": [
+        0,
+        4.2,
+        -3.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "accepts": [],
+      "movement": {
+        "name": "jaw",
+        "turn": {
+          "x": [
+            -28,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "name": "mouth-grip",
+      "position": [
+        0,
+        16,
+        -2.8
+      ],
+      "rotation": [
+        32,
+        0,
+        0
+      ],
+      "accepts": [
+        "mount",
+        "Auxiliary",
+        "Main",
+        "Heavy",
+        "Superheavy",
+        "Integrated"
+      ],
+      "movement": {}
+    }
+  ],
+  "plugs": [],
+  "insignia": [
+    {
+      "name": "head",
+      "at": "14b58df2-2d4f-8a2c-8af4-2da465589d55/center",
+      "position": [
+        2.764,
+        -2.14,
+        5.215
+      ],
+      "rotation": [
+        100.303,
+        22.321,
+        4.577
+      ],
+      "size": [
+        7,
+        6.3,
+        7
+      ],
+      "turn": 0
+    }
+  ],
+  "data": {
+    "uri": ""
+  },
+  "materials": {},
+  "pose": "",
+  "poses": {},
+  "animations": {},
+  "meta": {}
+}

@@ -1,0 +1,105 @@
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "format": {
+    "name": "mecha",
+    "version": {
+      "major": 1,
+      "minor": 0
+    }
+  },
+  "id": "fdaa23bd-7f77-836e-8f25-e1056859cad0",
+  "revision": 1,
+  "name": "Punch",
+  "author": {
+    "ai": 1
+  },
+  "plays": "attack",
+  "requires": [
+    {
+      "component": "shoulder",
+      "has": [
+        {
+          "joint": "elbow"
+        }
+      ],
+      "amount": {
+        "minimum": 1
+      },
+      "name": "arm"
+    }
+  ],
+  "optional": [
+    "waist",
+    "head"
+  ],
+  "length": 0.55,
+  "loop": false,
+  "steps": [
+    {
+      "at": 0.14,
+      "waist": {
+        "face": {
+          "points.me.arm01": 22
+        },
+        "back": 6
+      },
+      "arm01": {
+        "up": 20,
+        "back": 0,
+        "elbow": {
+          "bend": 85
+        }
+      }
+    },
+    {
+      "at": 0.26,
+      "waist": {
+        "face": {
+          "points.me.arm01": -34
+        },
+        "forward": 14
+      },
+      "arm01": {
+        "up": 82,
+        "elbow": {
+          "bend": 5
+        }
+      },
+      "mark": "hit"
+    },
+    {
+      "at": 0.36,
+      "waist": {
+        "face": {
+          "points.me.arm01": -30
+        },
+        "forward": 12
+      },
+      "arm01": {
+        "up": 76,
+        "elbow": {
+          "bend": 8
+        }
+      }
+    },
+    {
+      "at": 0.52,
+      "waist": {
+        "face": {
+          "points.me.arm01": 0
+        },
+        "forward": 4
+      },
+      "arm01": {
+        "up": 12,
+        "elbow": {
+          "bend": 22
+        }
+      },
+      "mark": "end"
+    }
+  ]
+}

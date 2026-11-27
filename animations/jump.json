@@ -1,0 +1,94 @@
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "format": {
+    "name": "mecha",
+    "version": {
+      "major": 1,
+      "minor": 0
+    }
+  },
+  "id": "276144da-2cc9-84b4-846e-b102b3c6a196",
+  "revision": 1,
+  "name": "Jump",
+  "author": {
+    "ai": 1
+  },
+  "plays": "jump",
+  "requires": [
+    "hip:02",
+    "knee:02"
+  ],
+  "optional": [
+    "ankle",
+    "waist",
+    "shoulder"
+  ],
+  "length": 0.9,
+  "loop": false,
+  "steps": [
+    {
+      "at": 0.02,
+      "mark": "takeoff"
+    },
+    {
+      "at": 0.08,
+      "waist": {
+        "forward": 12
+      },
+      "hip": {
+        "up": 4,
+        "knee": {
+          "back": 6,
+          "ankle": {
+            "down": 20
+          }
+        }
+      },
+      "shoulder": {
+        "back": 10,
+        "out": 8
+      }
+    },
+    {
+      "at": 0.4,
+      "waist": {
+        "forward": 8
+      },
+      "hip": {
+        "up": 42,
+        "knee": {
+          "back": 80,
+          "ankle": {
+            "down": 16
+          }
+        }
+      },
+      "shoulder": {
+        "up": 12,
+        "out": 24
+      }
+    },
+    {
+      "at": 0.85,
+      "waist": {
+        "forward": 14
+      },
+      "hip": {
+        "up": 24,
+        "knee": {
+          "back": 34,
+          "ankle": {
+            "up": 6
+          }
+        }
+      },
+      "shoulder": {
+        "up": 4,
+        "out": 18
+      }
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "format": {
+    "name": "lancer",
+    "version": {
+      "major": 1,
+      "minor": 0
+    }
+  },
+  "id": "5ea774d1-06d7-4440-8ad3-4990e9b093be",
+  "revision": 1,
+  "name": "Tech",
+  "author": {
+    "ai": 1
+  },
+  "plays": "tech",
+  "requires": [],
+  "optional": [
+    "waist",
+    "head",
+    "shoulder",
+    "elbow",
+    "hip",
+    "knee",
+    "ankle"
+  ],
+  "length": 1.2,
+  "loop": false,
+  "steps": [
+    {
+      "at": 0.3,
+      "head": {
+        "down": 15
+      },
+      "waist": {
+        "forward": 4
+      },
+      "shoulder": {
+        "elbow": {
+          "bend": "20%"
+        }
+      },
+      "mark": "use"
+    },
+    {
+      "at": 0.6,
+      "head": {
+        "down": 15,
+        "left": 4
+      }
+    },
+    {
+      "at": 0.75,
+      "head": {
+        "down": 15,
+        "right": 4
+      }
+    },
+    {
+      "at": 0.9,
+      "head": {
+        "down": 15,
+        "left": 0
+      },
+      "waist": {
+        "forward": 4
+      },
+      "shoulder": {
+        "elbow": {
+          "bend": "20%"
+        }
+      },
+      "mark": "end"
+    },
+    {
+      "at": 1.2,
+      "head": {
+        "down": 0
+      },
+      "waist": {
+        "forward": 0
+      },
+      "shoulder": {
+        "elbow": {
+          "bend": 0
+        }
+      }
+    }
+  ]
+}

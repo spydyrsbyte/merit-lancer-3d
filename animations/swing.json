@@ -1,0 +1,112 @@
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "format": {
+    "name": "mecha",
+    "version": {
+      "major": 1,
+      "minor": 0
+    }
+  },
+  "id": "74fb9cef-4a4a-8fae-8728-0c391a0d16e9",
+  "revision": 1,
+  "name": "Swing",
+  "author": {
+    "ai": 1
+  },
+  "plays": "attack",
+  "requires": [
+    {
+      "component": "shoulder",
+      "has": [
+        {
+          "joint": "elbow"
+        },
+        {
+          "shape": [
+            "melee"
+          ]
+        }
+      ],
+      "amount": {
+        "minimum": 1
+      },
+      "name": "weaponarm"
+    }
+  ],
+  "optional": [
+    "waist",
+    "head"
+  ],
+  "length": 0.75,
+  "loop": false,
+  "steps": [
+    {
+      "at": 0.24,
+      "waist": {
+        "face": {
+          "points.me.weaponarm01": 30
+        },
+        "back": 6
+      },
+      "weaponarm01": {
+        "up": 95,
+        "out": 24,
+        "elbow": {
+          "bend": 60
+        }
+      }
+    },
+    {
+      "at": 0.38,
+      "waist": {
+        "face": {
+          "points.me.weaponarm01": -36
+        },
+        "forward": 18
+      },
+      "weaponarm01": {
+        "up": 55,
+        "out": 0,
+        "elbow": {
+          "bend": 0
+        }
+      },
+      "mark": "hit"
+    },
+    {
+      "at": 0.5,
+      "waist": {
+        "face": {
+          "points.me.weaponarm01": -38
+        },
+        "forward": 18
+      },
+      "weaponarm01": {
+        "up": 35,
+        "elbow": {
+          "bend": 0
+        }
+      }
+    },
+    {
+      "at": 0.72,
+      "waist": {
+        "face": {
+          "points.me.weaponarm01": 0
+        },
+        "forward": 4
+      },
+      "weaponarm01": {
+        "up": 12,
+        "out": 4,
+        "elbow": {
+          "bend": 22
+        }
+      },
+      "mark": "end"
+    }
+  ]
+}

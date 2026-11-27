@@ -1,0 +1,103 @@
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "format": {
+    "name": "lancer",
+    "version": {
+      "major": 1,
+      "minor": 0
+    }
+  },
+  "id": "b210a490-e905-480b-8a3d-cfe9ed982063",
+  "revision": 1,
+  "name": "Down",
+  "author": {
+    "ai": 1
+  },
+  "plays": "down",
+  "requires": [],
+  "optional": [
+    "waist",
+    "head",
+    "shoulder",
+    "elbow",
+    "hip",
+    "knee",
+    "ankle"
+  ],
+  "length": 1.4,
+  "loop": false,
+  "steps": [
+    {
+      "at": 0.7,
+      "waist": {
+        "forward": 5
+      },
+      "head": {
+        "down": 8
+      }
+    },
+    {
+      "at": 0.9,
+      "hip": {
+        "up": 50,
+        "knee": {
+          "back": "90%",
+          "ankle": {
+            "up": 30
+          }
+        }
+      },
+      "head": {
+        "down": 10
+      }
+    },
+    {
+      "at": 1.1,
+      "waist": {
+        "forward": 25
+      },
+      "head": {
+        "down": 25
+      },
+      "shoulder": {
+        "back": 8,
+        "elbow": {
+          "bend": "10%"
+        }
+      },
+      "hip": {
+        "up": 49,
+        "knee": {
+          "back": "85%",
+          "ankle": {
+            "up": 30
+          }
+        }
+      }
+    },
+    {
+      "at": 1.4,
+      "waist": {
+        "forward": 23
+      },
+      "head": {
+        "down": 22
+      },
+      "shoulder": {
+        "back": 5
+      },
+      "hip": {
+        "up": 48,
+        "knee": {
+          "back": "88%",
+          "ankle": {
+            "up": 30
+          }
+        }
+      }
+    }
+  ]
+}

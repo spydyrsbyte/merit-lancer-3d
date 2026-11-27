@@ -1,0 +1,80 @@
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "format": {
+    "name": "mecha",
+    "version": {
+      "major": 1,
+      "minor": 0
+    }
+  },
+  "id": "48e24b45-eec2-8621-870c-201f4a4ee7fb",
+  "revision": 1,
+  "name": "Ready",
+  "author": {
+    "ai": 1
+  },
+  "plays": "idle",
+  "requires": [],
+  "optional": [
+    "waist",
+    "head",
+    "shoulder",
+    "elbow",
+    "hip",
+    "knee",
+    "ankle"
+  ],
+  "length": 2.4,
+  "loop": true,
+  "steps": [
+    {
+      "at": 0,
+      "waist": {
+        "forward": 4
+      },
+      "shoulder": {
+        "up": 12,
+        "out": 4,
+        "elbow": {
+          "bend": 22
+        }
+      },
+      "hip": {
+        "up": 13,
+        "out": 3,
+        "knee": {
+          "back": 26,
+          "ankle": {
+            "up": 13
+          }
+        }
+      }
+    },
+    {
+      "at": 1.2,
+      "waist": {
+        "forward": 7
+      },
+      "shoulder": {
+        "up": 15,
+        "out": 6,
+        "elbow": {
+          "bend": 28
+        }
+      },
+      "hip": {
+        "up": 16,
+        "out": 3,
+        "knee": {
+          "back": 32,
+          "ankle": {
+            "up": 16
+          }
+        }
+      }
+    }
+  ]
+}

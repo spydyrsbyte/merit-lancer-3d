@@ -1,0 +1,135 @@
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "format": {
+    "name": "mecha",
+    "version": {
+      "major": 1,
+      "minor": 0
+    }
+  },
+  "id": "72011d80-4ab9-881a-800f-501e2d87af67",
+  "revision": 1,
+  "name": "Two-legged walk",
+  "author": {
+    "ai": 1
+  },
+  "plays": "walk",
+  "requires": [
+    "hip:02",
+    "knee:02"
+  ],
+  "optional": [
+    "ankle",
+    "waist",
+    "shoulder",
+    "elbow"
+  ],
+  "length": 1,
+  "loop": true,
+  "stride": 1.1,
+  "define": {
+    "step": {
+      "length": 1,
+      "steps": [
+        {
+          "at": 0,
+          "up": 24,
+          "knee": {
+            "back": 4,
+            "ankle": {
+              "down": 4,
+              "mark": "footstep"
+            }
+          }
+        },
+        {
+          "at": 0.25,
+          "up": 2,
+          "knee": {
+            "back": 12,
+            "ankle": {
+              "up": 6
+            }
+          }
+        },
+        {
+          "at": 0.5,
+          "back": 22,
+          "knee": {
+            "back": 14,
+            "ankle": {
+              "up": 14
+            }
+          }
+        },
+        {
+          "at": 0.75,
+          "up": 14,
+          "knee": {
+            "back": 58,
+            "ankle": {
+              "up": 10
+            }
+          }
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "hip01": {
+        "play": [
+          {
+            "use": "step"
+          }
+        ]
+      },
+      "waist": {
+        "forward": 5,
+        "left": 5
+      },
+      "shoulder01": {
+        "back": 12,
+        "elbow": {
+          "bend": 18
+        }
+      },
+      "shoulder02": {
+        "up": 16,
+        "elbow": {
+          "bend": 26
+        }
+      }
+    },
+    {
+      "at": 0.5,
+      "hip02": {
+        "play": [
+          {
+            "use": "step"
+          }
+        ]
+      },
+      "waist": {
+        "forward": 5,
+        "right": 5
+      },
+      "shoulder01": {
+        "up": 16,
+        "elbow": {
+          "bend": 26
+        }
+      },
+      "shoulder02": {
+        "back": 12,
+        "elbow": {
+          "bend": 18
+        }
+      }
+    }
+  ]
+}

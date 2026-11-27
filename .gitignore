@@ -1,0 +1,5 @@
+node_modules/
+packs/library/LOCK
+packs/library/LOG
+packs/library/LOG.old
+*.zip

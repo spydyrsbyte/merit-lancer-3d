@@ -1,0 +1,151 @@
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "format": {
+    "name": "mecha",
+    "version": {
+      "major": 1,
+      "minor": 0
+    }
+  },
+  "id": "8f65d6b0-2a41-8310-851a-1a605803cafb",
+  "revision": 1,
+  "name": "Slash",
+  "author": {
+    "ai": 1
+  },
+  "plays": "attack",
+  "requires": [
+    {
+      "component": "shoulder",
+      "has": [
+        {
+          "joint": "elbow"
+        },
+        {
+          "shape": [
+            "melee",
+            "blade"
+          ]
+        }
+      ],
+      "amount": {
+        "minimum": 1
+      },
+      "name": "swordarm"
+    }
+  ],
+  "optional": [
+    "waist",
+    "head"
+  ],
+  "length": 0.85,
+  "loop": false,
+  "steps": [
+    {
+      "at": 0.26,
+      "waist": {
+        "face": {
+          "points.me.swordarm01": 34
+        },
+        "back": 8
+      },
+      "swordarm01": {
+        "up": 118,
+        "out": 20,
+        "elbow": {
+          "bend": 70
+        },
+        "glow": {
+          "blade": {
+            "color": "#9fe8ff",
+            "strength": 0,
+            "reach": 22
+          }
+        }
+      }
+    },
+    {
+      "at": 0.36,
+      "waist": {
+        "face": {
+          "points.me.swordarm01": 32
+        },
+        "back": 9
+      },
+      "swordarm01": {
+        "up": 122,
+        "out": 16,
+        "elbow": {
+          "bend": 60
+        },
+        "glow": {
+          "blade": {
+            "strength": 1
+          }
+        }
+      }
+    },
+    {
+      "at": 0.46,
+      "waist": {
+        "face": {
+          "points.me.swordarm01": -38
+        },
+        "forward": 20
+      },
+      "swordarm01": {
+        "up": 62,
+        "out": 0,
+        "elbow": {
+          "bend": 0
+        }
+      },
+      "mark": "hit"
+    },
+    {
+      "at": 0.58,
+      "waist": {
+        "face": {
+          "points.me.swordarm01": -40
+        },
+        "forward": 22
+      },
+      "swordarm01": {
+        "up": 30,
+        "elbow": {
+          "bend": 0
+        },
+        "glow": {
+          "blade": {
+            "strength": 0.4
+          }
+        }
+      }
+    },
+    {
+      "at": 0.8,
+      "waist": {
+        "face": {
+          "points.me.swordarm01": 0
+        },
+        "forward": 4
+      },
+      "swordarm01": {
+        "up": 12,
+        "out": 4,
+        "elbow": {
+          "bend": 22
+        },
+        "glow": {
+          "blade": {
+            "strength": 0
+          }
+        }
+      },
+      "mark": "end"
+    }
+  ]
+}

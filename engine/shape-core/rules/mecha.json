@@ -1,0 +1,48 @@
+{
+  "version": { "major": 1, "minor": 0 },
+  "id": "7c0c9a1e-5d1b-4f0e-8a5e-3b1c6d2f9e40",
+  "revision": 1,
+  "name": "mecha",
+  "author": { "ai": 1 },
+  "conventions": [
+    "head", "neck", "waist", "pelvis", "tail",
+    "shoulder", "elbow", "wrist", "finger",
+    "hip", "knee", "ankle", "toe",
+    "wing", "wheel", "turret", "mount",
+    "front", "rear", "left", "right"
+  ],
+  "mirrors": ["right"],
+  "keywords": ["melee", "ranged", "blade", "blunt", "spear", "claw", "gun", "cannon", "launcher", "drone", "shield", "energy", "kinetic", "explosive"],
+  "movements": {
+    "head": { "up": "+x", "down": "-x", "left": "+z", "right": "-z", "tilt-left": "-y", "tilt-right": "+y" },
+    "neck": { "up": "+x", "down": "-x", "left": "+z", "right": "-z", "tilt-left": "-y", "tilt-right": "+y" },
+    "waist": { "back": "+x", "forward": "-x", "left": "+z", "right": "-z", "tilt-left": "-y", "tilt-right": "+y" },
+    "pelvis": { "back": "+x", "forward": "-x", "left": "+z", "right": "-z", "tilt-left": "-y", "tilt-right": "+y", "rise": "+mz", "sink": "-mz" },
+    "tail": { "up": "-x", "down": "+x", "left": "-z", "right": "+z", "tilt-left": "-y", "tilt-right": "+y" },
+    "shoulder": { "up": "+x", "back": "-x", "out": "+y", "in": "-y", "turn-out": "+z", "turn-in": "-z" },
+    "elbow": { "bend": "+x", "stretch": "-x" },
+    "wrist": { "up": "+x", "down": "-x", "out": "+y", "in": "-y", "turn-out": "+z", "turn-in": "-z" },
+    "finger": { "close": "+x", "open": "-x" },
+    "hip": { "up": "+x", "back": "-x", "out": "+y", "in": "-y", "turn-out": "+z", "turn-in": "-z" },
+    "knee": { "back": "-x", "forward": "+x" },
+    "ankle": { "up": "+x", "down": "-x" },
+    "toe": { "up": "+x", "down": "-x" },
+    "wing": { "up": "+y", "down": "-y", "forward": "-z", "back": "+z", "pitch-up": "+x", "pitch-down": "-x" },
+    "wheel": { "forward": "-x", "back": "+x" },
+    "turret": { "up": "+x", "down": "-x", "left": "+z", "right": "-z" },
+    "mount": { "up": "+x", "down": "-x", "left": "+z", "right": "-z", "forward": "+my", "back": "-my", "rise": "+mz", "sink": "-mz" }
+  },
+  "animations": {
+    "idle": { "loop": true },
+    "walk": { "loop": true, "follows": "distance", "marks": ["footstep"] },
+    "jump": { "marks": ["takeoff"] },
+    "jump": { "marks": ["takeoff"] },
+    "jump": { "marks": ["takeoff"] },
+    "jump": { "marks": ["takeoff"] },
+    "jump": { "marks": ["takeoff"] },
+    "attack": { "marks": ["end"] },
+    "hit": {},
+    "down": {}
+  },
+  "points": ["target", "message"]
+}

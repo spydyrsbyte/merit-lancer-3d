@@ -1,0 +1,72 @@
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "format": {
+    "name": "lancer",
+    "version": {
+      "major": 1,
+      "minor": 0
+    }
+  },
+  "id": "e5a090d3-9e5c-444e-9b57-84f7761ffa18",
+  "revision": 1,
+  "name": "Use",
+  "author": {
+    "ai": 1
+  },
+  "plays": "use",
+  "requires": [],
+  "optional": [
+    "waist",
+    "head",
+    "shoulder",
+    "elbow",
+    "hip",
+    "knee",
+    "ankle"
+  ],
+  "length": 1,
+  "loop": false,
+  "steps": [
+    {
+      "at": 0.3,
+      "shoulder": {
+        "up": 14,
+        "elbow": {
+          "bend": "25%"
+        }
+      },
+      "head": {
+        "down": 12
+      },
+      "mark": "use"
+    },
+    {
+      "at": 0.7,
+      "shoulder": {
+        "up": 14,
+        "elbow": {
+          "bend": "25%"
+        }
+      },
+      "head": {
+        "down": 12
+      },
+      "mark": "end"
+    },
+    {
+      "at": 1,
+      "shoulder": {
+        "up": 0,
+        "elbow": {
+          "bend": 0
+        }
+      },
+      "head": {
+        "down": 0
+      }
+    }
+  ]
+}

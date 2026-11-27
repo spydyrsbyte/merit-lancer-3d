@@ -1,0 +1,101 @@
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "format": {
+    "name": "lancer",
+    "version": {
+      "major": 1,
+      "minor": 0
+    }
+  },
+  "id": "73051974-dc29-4c21-a757-9b40e5fd9a3d",
+  "revision": 1,
+  "name": "Stagger",
+  "author": {
+    "ai": 1
+  },
+  "plays": "stagger",
+  "requires": [],
+  "optional": [
+    "waist",
+    "head",
+    "shoulder",
+    "elbow",
+    "hip",
+    "knee",
+    "ankle"
+  ],
+  "length": 1.2,
+  "loop": false,
+  "steps": [
+    {
+      "at": 0.12,
+      "waist": {
+        "back": 10,
+        "left": 9
+      },
+      "head": {
+        "up": 10
+      }
+    },
+    {
+      "at": 0.4,
+      "waist": {
+        "forward": 18,
+        "left": 12
+      },
+      "head": {
+        "down": 20
+      },
+      "shoulder": {
+        "up": 20
+      },
+      "hip": {
+        "up": 18,
+        "knee": {
+          "back": "32%"
+        }
+      }
+    },
+    {
+      "at": 0.8,
+      "waist": {
+        "forward": 14,
+        "right": 10
+      },
+      "head": {
+        "down": 14
+      },
+      "shoulder": {
+        "back": 10
+      },
+      "hip": {
+        "up": 16,
+        "knee": {
+          "back": "28%"
+        }
+      }
+    },
+    {
+      "at": 1.2,
+      "waist": {
+        "forward": 0,
+        "right": 0
+      },
+      "head": {
+        "down": 0
+      },
+      "shoulder": {
+        "back": 0
+      },
+      "hip": {
+        "up": 0,
+        "knee": {
+          "back": 0
+        }
+      }
+    }
+  ]
+}

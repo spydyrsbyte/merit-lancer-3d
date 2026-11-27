@@ -1,0 +1,20 @@
+{
+  "version": { "major": 1, "minor": 0 },
+  "basis": { "id": "7c0c9a1e-5d1b-4f0e-8a5e-3b1c6d2f9e40", "name": "mecha", "revision": 1 },
+  "id": "b2d8f0a3-6c47-4c1b-9d52-70e4f3a18c66",
+  "revision": 2,
+  "name": "lancer",
+  "author": { "ai": 1 },
+  "keywords": [
+    "melee", "ranged",
+    "superheavy", "heavy", "main", "auxiliary",
+    "rifle", "cannon", "launcher", "cqb", "nexus",
+    "system", "mod",
+    "gms", "ips-n", "ssc", "horus", "ha"
+  ],
+  "animations": {
+    "tech": { "marks": ["use", "end"] },
+    "use": { "marks": ["use", "end"] },
+    "stagger": {}
+  }
+}

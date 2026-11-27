@@ -1,0 +1,135 @@
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "format": {
+    "name": "mecha",
+    "version": {
+      "major": 1,
+      "minor": 0
+    }
+  },
+  "id": "d297ef2f-33d0-8618-8e6f-d663ed819922",
+  "revision": 1,
+  "name": "Pound",
+  "author": {
+    "ai": 1
+  },
+  "plays": "attack",
+  "requires": [
+    {
+      "component": "shoulder",
+      "has": [
+        {
+          "joint": "elbow"
+        },
+        {
+          "shape": [
+            "melee",
+            "blunt"
+          ]
+        }
+      ],
+      "amount": {
+        "minimum": 1
+      },
+      "name": "hammerarm"
+    }
+  ],
+  "optional": [
+    "waist",
+    "head"
+  ],
+  "length": 1.1,
+  "loop": false,
+  "steps": [
+    {
+      "at": 0.1,
+      "head": {
+        "face": "points.me.blunt:now"
+      }
+    },
+    {
+      "at": 0.42,
+      "waist": {
+        "face": {
+          "points.me.hammerarm01": 14
+        },
+        "back": 10
+      },
+      "hammerarm01": {
+        "up": 128,
+        "out": 6,
+        "elbow": {
+          "bend": 95
+        }
+      }
+    },
+    {
+      "at": 0.54,
+      "waist": {
+        "face": {
+          "points.me.hammerarm01": 16
+        },
+        "back": 10
+      },
+      "hammerarm01": {
+        "up": 130,
+        "out": 4,
+        "elbow": {
+          "bend": 90
+        }
+      }
+    },
+    {
+      "at": 0.64,
+      "waist": {
+        "face": {
+          "points.me.hammerarm01": -22
+        },
+        "forward": 25
+      },
+      "hammerarm01": {
+        "up": 40,
+        "out": 0,
+        "elbow": {
+          "bend": 0
+        }
+      },
+      "mark": "hit"
+    },
+    {
+      "at": 0.82,
+      "waist": {
+        "face": {
+          "points.me.hammerarm01": -22
+        },
+        "forward": 24
+      },
+      "hammerarm01": {
+        "up": 36,
+        "elbow": {
+          "bend": 4
+        }
+      }
+    },
+    {
+      "at": 1.06,
+      "waist": {
+        "face": {
+          "points.me.hammerarm01": 0
+        },
+        "forward": 4
+      },
+      "hammerarm01": {
+        "up": 12,
+        "out": 4,
+        "elbow": {
+          "bend": 22
+        }
+      },
+      "mark": "end"
+    }
+  ]
+}

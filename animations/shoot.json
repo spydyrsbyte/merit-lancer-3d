@@ -1,0 +1,341 @@
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "format": {
+    "name": "mecha",
+    "version": {
+      "major": 1,
+      "minor": 0
+    }
+  },
+  "id": "e170f16e-1ad2-813d-893d-eba530f5eeba",
+  "revision": 1,
+  "name": "Three shots",
+  "author": {
+    "ai": 1
+  },
+  "plays": "attack",
+  "requires": [
+    {
+      "component": "shoulder",
+      "has": [
+        {
+          "joint": "elbow"
+        },
+        {
+          "shape": [
+            "ranged"
+          ]
+        }
+      ],
+      "amount": {
+        "minimum": 1
+      },
+      "name": "gunarm"
+    },
+    "points.target"
+  ],
+  "optional": [
+    "waist",
+    "head"
+  ],
+  "length": 1.25,
+  "loop": false,
+  "steps": [
+    {
+      "at": 0.1,
+      "head": {
+        "face": "points.target:now"
+      }
+    },
+    {
+      "at": 0.22,
+      "gunarm01": {
+        "up": 48,
+        "out": 0,
+        "elbow": {
+          "bend": 4
+        }
+      },
+      "waist": {
+        "forward": 2
+      }
+    },
+    {
+      "at": 0.3,
+      "gunarm01": {
+        "up": 48
+      }
+    },
+    {
+      "at": 0.35,
+      "waist": {
+        "back": 4
+      },
+      "gunarm01": {
+        "up": 57,
+        "glow": {
+          "ranged": {
+            "color": "#ffb04a",
+            "strength": 0.22,
+            "reach": 20
+          }
+        }
+      }
+    },
+    {
+      "at": 0.44,
+      "waist": {
+        "forward": 2
+      },
+      "gunarm01": {
+        "up": 48,
+        "glow": {
+          "ranged": {
+            "strength": 0
+          }
+        }
+      }
+    },
+    {
+      "at": 0.5,
+      "gunarm01": {
+        "up": 48
+      }
+    },
+    {
+      "at": 0.55,
+      "waist": {
+        "back": 4
+      },
+      "gunarm01": {
+        "up": 57,
+        "glow": {
+          "ranged": {
+            "color": "#ffb04a",
+            "strength": 0.22,
+            "reach": 20
+          }
+        }
+      }
+    },
+    {
+      "at": 0.64,
+      "waist": {
+        "forward": 2
+      },
+      "gunarm01": {
+        "up": 48,
+        "glow": {
+          "ranged": {
+            "strength": 0
+          }
+        }
+      }
+    },
+    {
+      "at": 0.7,
+      "gunarm01": {
+        "up": 48
+      }
+    },
+    {
+      "at": 0.75,
+      "waist": {
+        "back": 4
+      },
+      "gunarm01": {
+        "up": 57,
+        "glow": {
+          "ranged": {
+            "color": "#ffb04a",
+            "strength": 0.25,
+            "reach": 20
+          }
+        }
+      }
+    },
+    {
+      "at": 0.84,
+      "waist": {
+        "forward": 2
+      },
+      "gunarm01": {
+        "up": 48,
+        "glow": {
+          "ranged": {
+            "strength": 0
+          }
+        }
+      }
+    },
+    {
+      "at": 0.32,
+      "gunarm01": {
+        "spawn": {
+          "first": {
+            "use": "d4279222-6a25-8b31-84d5-da8cabf1a8e3",
+            "at": "muzzle"
+          },
+          "flash-first": {
+            "use": "3facf170-204d-8310-8756-458d89683a52",
+            "at": "muzzle",
+            "attached": true
+          }
+        }
+      },
+      "mark": "fire"
+    },
+    {
+      "at": 0.39,
+      "flash-first": {
+        "size": [
+          0.4,
+          1.4,
+          0.4
+        ]
+      }
+    },
+    {
+      "at": 0.4,
+      "despawn": "flash-first"
+    },
+    {
+      "at": 0.33,
+      "glow": {
+        "first": {
+          "color": "#ffb04a",
+          "strength": 1.6,
+          "reach": 14
+        }
+      }
+    },
+    {
+      "at": 0.52,
+      "first": {
+        "to": "points.target"
+      }
+    },
+    {
+      "at": 0.52,
+      "despawn": "first"
+    },
+    {
+      "at": 0.52,
+      "gunarm01": {
+        "spawn": {
+          "second": {
+            "use": "d4279222-6a25-8b31-84d5-da8cabf1a8e3",
+            "at": "muzzle"
+          },
+          "flash-second": {
+            "use": "3facf170-204d-8310-8756-458d89683a52",
+            "at": "muzzle",
+            "attached": true
+          }
+        }
+      },
+      "mark": "fire"
+    },
+    {
+      "at": 0.5900000000000001,
+      "flash-second": {
+        "size": [
+          0.4,
+          1.4,
+          0.4
+        ]
+      }
+    },
+    {
+      "at": 0.6,
+      "despawn": "flash-second"
+    },
+    {
+      "at": 0.53,
+      "glow": {
+        "second": {
+          "color": "#ffb04a",
+          "strength": 1.6,
+          "reach": 14
+        }
+      }
+    },
+    {
+      "at": 0.72,
+      "second": {
+        "to": "points.target"
+      }
+    },
+    {
+      "at": 0.72,
+      "despawn": "second"
+    },
+    {
+      "at": 0.72,
+      "gunarm01": {
+        "spawn": {
+          "third": {
+            "use": "d4279222-6a25-8b31-84d5-da8cabf1a8e3",
+            "at": "muzzle"
+          },
+          "flash-third": {
+            "use": "3facf170-204d-8310-8756-458d89683a52",
+            "at": "muzzle",
+            "attached": true
+          }
+        }
+      },
+      "mark": "fire"
+    },
+    {
+      "at": 0.79,
+      "flash-third": {
+        "size": [
+          0.4,
+          1.4,
+          0.4
+        ]
+      }
+    },
+    {
+      "at": 0.7999999999999999,
+      "despawn": "flash-third"
+    },
+    {
+      "at": 0.73,
+      "glow": {
+        "third": {
+          "color": "#ffb04a",
+          "strength": 1.6,
+          "reach": 14
+        }
+      }
+    },
+    {
+      "at": 0.92,
+      "third": {
+        "to": "points.target"
+      }
+    },
+    {
+      "at": 0.92,
+      "despawn": "third"
+    },
+    {
+      "at": 1.2,
+      "gunarm01": {
+        "up": 12,
+        "elbow": {
+          "bend": 22
+        }
+      },
+      "waist": {
+        "forward": 4
+      },
+      "mark": "end"
+    }
+  ]
+}

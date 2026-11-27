@@ -1,0 +1,159 @@
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "format": {
+    "name": "mecha",
+    "version": {
+      "major": 1,
+      "minor": 0
+    }
+  },
+  "id": "02f03752-3529-82e1-82f5-bbdf5e62005b",
+  "revision": 1,
+  "name": "Two swords",
+  "author": {
+    "ai": 1
+  },
+  "plays": "attack",
+  "requires": [
+    {
+      "component": "shoulder",
+      "has": [
+        {
+          "joint": "elbow"
+        },
+        {
+          "shape": [
+            "melee",
+            "blade"
+          ]
+        }
+      ],
+      "amount": 2,
+      "name": "swordarm"
+    }
+  ],
+  "optional": [
+    "waist",
+    "head"
+  ],
+  "length": 1.15,
+  "loop": false,
+  "steps": [
+    {
+      "at": 0.26,
+      "waist": {
+        "face": {
+          "points.me.swordarm01": 20
+        },
+        "back": 9
+      },
+      "swordarm": {
+        "up": 122,
+        "out": 26,
+        "elbow": {
+          "bend": 65
+        },
+        "glow": {
+          "blade": {
+            "color": "#9fe8ff",
+            "strength": 0.9,
+            "reach": 22
+          }
+        }
+      }
+    },
+    {
+      "at": 0.4,
+      "waist": {
+        "face": {
+          "points.me.swordarm01": -34
+        },
+        "forward": 14
+      },
+      "swordarm01": {
+        "up": 50,
+        "out": 0,
+        "elbow": {
+          "bend": 0
+        }
+      },
+      "swordarm02": {
+        "up": 124,
+        "out": 24,
+        "elbow": {
+          "bend": 65
+        }
+      },
+      "mark": "hit"
+    },
+    {
+      "at": 0.6,
+      "waist": {
+        "face": {
+          "points.me.swordarm01": 32
+        },
+        "forward": 22
+      },
+      "swordarm01": {
+        "up": 30,
+        "out": 8,
+        "elbow": {
+          "bend": 0
+        }
+      },
+      "swordarm02": {
+        "up": 50,
+        "out": 0,
+        "elbow": {
+          "bend": 0
+        }
+      },
+      "mark": "hit"
+    },
+    {
+      "at": 0.78,
+      "waist": {
+        "forward": 22
+      },
+      "swordarm02": {
+        "up": 30,
+        "out": 8,
+        "elbow": {
+          "bend": 0
+        }
+      },
+      "swordarm": {
+        "glow": {
+          "blade": {
+            "strength": 0.3
+          }
+        }
+      }
+    },
+    {
+      "at": 1.1,
+      "waist": {
+        "face": {
+          "points.me.swordarm01": 0
+        },
+        "forward": 4
+      },
+      "swordarm": {
+        "up": 12,
+        "out": 4,
+        "elbow": {
+          "bend": 22
+        },
+        "glow": {
+          "blade": {
+            "strength": 0
+          }
+        }
+      },
+      "mark": "end"
+    }
+  ]
+}

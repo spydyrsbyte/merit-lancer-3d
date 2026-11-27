@@ -1,0 +1,20 @@
+{
+  "version": { "major": 2, "minor": 0 },
+  "format": { "id": "b2d8f0a3-6c47-4c1b-9d52-70e4f3a18c66", "name": "lancer", "revision": 2 },
+  "id": "c41e0b6d-7a2f-4e88-b1d3-2a9f5c6e8b02",
+  "revision": 1,
+  "name": "System",
+  "author": { "ai": 1 },
+  "keywords": ["system"],
+  "shapes": [
+    { "id": "5e1a7b2c-2c1b-4d54-9a1f-7b2c3d4e5f01", "name": "Case", "use": "box", "position": [0, 0, 4], "rotation": [0, 0, 0], "size": [8, 6, 8], "paint": { "primary": "secondary" } },
+    { "id": "5e1a7b2c-2c1b-4d54-9a1f-7b2c3d4e5f02", "name": "Light", "use": "box", "position": [0, 3.1, 5], "rotation": [0, 0, 0], "size": [4, 0.4, 2], "paint": { "primary": "lights" } }
+  ],
+  "sockets": [],
+  "plugs": [
+    { "name": "mount", "position": [0, 0, 0], "rotation": [0, 0, 0], "fits": ["mount"] }
+  ],
+  "materials": {},
+  "poses": {},
+  "meta": {}
+}

@@ -1,0 +1,120 @@
+{
+  "TYPES": {
+    "Item": {
+      "merit-lancer-3d.mech": "3D Mech",
+      "merit-lancer-3d.weapon": "3D Weapon",
+      "merit-lancer-3d.system": "3D System",
+      "merit-lancer-3d.mod": "3D Mod"
+    }
+  },
+  "MERIT3D": {
+    "Sheet": {
+      "Label": "MERIT LANCER 3D",
+      "detail": "Detail",
+      "token": "Token",
+      "workshop": "Workshop"
+    },
+    "Workshop": {
+      "Title": "Shape Workshop"
+    },
+    "Detail": {
+      "Shape": "Shape",
+      "Own": "Its own shape",
+      "NoShape": "There is no shape to show.",
+      "Pose": "Pose",
+      "AsBuilt": "As built",
+      "Mount": "Mount",
+      "MechChooses": "Wherever the mech chooses",
+      "MountNow": "Now on: {at}",
+      "NoMount": "There is no free mount for it.",
+      "Update": "Update",
+      "UpdateHint": "Make its meshes anew, with the newest shapes of the world and the library",
+      "Updated": "{name} is made anew.",
+      "Original": "Back to the original",
+      "OpenPicture": "Open a token picture…",
+      "NotAPicture": "That picture holds no mech.",
+      "Opened": "{name} is taken from the picture.",
+      "Color": {
+        "primary": "Primary",
+        "secondary": "Secondary",
+        "accent": "Accent",
+        "metal": "Metal",
+        "lights": "Lights"
+      }
+    },
+    "Hud": {
+      "Detail": "Mech detail"
+    },
+    "TokenType": {
+      "mech": {
+        "Label": "Mech token",
+        "Hint": "This token shows its 3D mech.",
+        "Convert": "Make it a mech"
+      },
+      "art": {
+        "Label": "Regular token",
+        "Hint": "This token shows its image.",
+        "Convert": "Make it a regular token"
+      }
+    },
+    "Uniform": {
+      "Title": "Uniforms",
+      "Uniform": "Uniform",
+      "New": "New uniform",
+      "Name": "Name",
+      "Unnamed": "Uniform",
+      "Save": "Save",
+      "Delete": "Delete",
+      "PutOn": "Put on {count} selected",
+      "Add": "Add a color to choose from",
+      "Remove": "Remove this color",
+      "Keep": "Keeps the mech's own",
+      "Done": "Put on {count} mechs."
+    },
+    "Setting": {
+      "enabled": {
+        "Name": "Show 3D mechs",
+        "Hint": "Mech tokens show their 3D mech instead of their image, on this computer."
+      },
+      "quality": {
+        "Name": "Quality",
+        "Hint": "How sharp mechs are, and how often a second they move. Lower is easier on a slow computer."
+      },
+      "motion": {
+        "Name": "Motion",
+        "Hint": "When mechs move: never, only while they walk or act, or always, standing too.",
+        "off": "Never",
+        "moving": "While walking or acting",
+        "always": "Always"
+      },
+      "actions": {
+        "Name": "Act along with LANCER",
+        "Hint": "Mechs attack, use systems and react when they are hit."
+      },
+      "turnLocked": {
+        "Name": "Turn tokens with locked rotation",
+        "Hint": "LANCER locks the rotation of new actors to keep portraits upright. A mech still faces where its token does."
+      }
+    },
+    "Token": {
+      "NoMech": "Only a mech on an actor has a token picture.",
+      "Hint": "Drag to turn the camera · Scroll to zoom",
+      "RingStyle": "Ring",
+      "RingColor": "Ring color",
+      "Background": "Background",
+      "Clear": "Clear",
+      "Camera": "Back to the usual camera",
+      "Use": "Use as the token",
+      "Used": "The token picture of {name} is made anew.",
+      "Ring": {
+        "plain": "Plain",
+        "double": "Double",
+        "notched": "Notched",
+        "segmented": "Segmented",
+        "bevel": "Bevelled",
+        "none": "No ring"
+      },
+      "Download": "Download"
+    }
+  }
+}

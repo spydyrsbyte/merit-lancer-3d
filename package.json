@@ -1,0 +1,11 @@
+{
+  "name": "merit-lancer-3d",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "engine": "node tools/engine.js",
+    "test": "node --test",
+    "pack": "node tools/pack.js"
+  }
+}
