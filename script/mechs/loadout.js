@@ -79,9 +79,8 @@ export class Loadout {
 
     this.#taken.add(open);
     this.mounts.push({ item: gear.item, at: open.name, placement: placement.id });
-    const size = STAND_IN_IDS.has(shape.id) ? sizeFor(gear) : 1;
 
-    return size === 1 ? placement : { ...placement, size: [size, size, size] };
+    return { ...placement, ...fitOf(gear, shape) };
   }
 
   #choose(gear, shape) {
