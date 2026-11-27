@@ -1,4 +1,4 @@
-# MERIT LANCER 3D
+# Merit Lancer 3D
 
 3D mechs as tokens in Foundry, for LANCER. Each mech is built from what it has in LANCER: its frame, and its weapons, systems and mods on its mounts. It walks as far as its token moves, turns where the token faces, and acts when LANCER rolls.
 

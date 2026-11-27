@@ -9,7 +9,7 @@
   },
   "MERIT3D": {
     "Sheet": {
-      "Label": "MERIT LANCER 3D",
+      "Label": "Merit Lancer 3D",
       "detail": "Detail",
       "token": "Token",
       "workshop": "Workshop"
@@ -158,7 +158,7 @@
       "NoPoints": "This frame has no mount points, so nothing can be equipped.",
       "OnMech": "On the mech",
       "FromSheet": "From your sheet",
-      "NoPart": "No part yet for: {names}. You can use any other one in its place.",
+      "NoPart": "No part yet for: {names}. Drop any other part on it, on the mech or in the list above, to use that one in its place.",
       "Kind": {
         "weapon": "Weapon",
         "system": "System",
@@ -265,7 +265,9 @@
         "barcode": "Barcode"
       },
       "AsBuilt": "As built",
-      "PoseHint": "Choose how the mech stands."
+      "PoseHint": "Choose how the mech stands.",
+      "LooksLike": "Looks like",
+      "StandIn": "A stand-in"
     }
   }
 }

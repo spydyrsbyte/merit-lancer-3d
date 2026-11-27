@@ -1,5 +1,5 @@
 /*
-  MERIT LANCER 3D: mechs as 3D tokens, made with CSG Bash (the engine in engine/).
+  Merit Lancer 3D: mechs as 3D tokens, made with CSG Bash (the engine in engine/).
 
   At init the items, settings and token pictures are made known. Motion, the rules and
   animations, is loaded once, and mechs wait for it. When the world is ready, LANCER's

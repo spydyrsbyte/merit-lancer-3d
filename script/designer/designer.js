@@ -5,7 +5,10 @@
     Frame     choose a variant of the actor's LANCER frame.
               What is equipped, painted and marked comes along where it fits.
     Equip     drag something onto the mech, or click it to put it in its usual place.
-              Drag it off the mech to take it off. The gear on the sheet comes first,
+              Drag it off the mech to take it off. Dropped on a part which is on the
+              mech, or on its row, it is used in that part's place: the part keeps its
+              name, its LANCER item and its mount, and looks like what was dropped. The
+              card has the same as "Looks like". The gear on the sheet comes first,
               each with the parts which stand for it, and any other part can be used.
               What is on the mech can be chosen, and sized, turned, flipped,
               straightened, given the mech's colors, or taken off.
@@ -320,7 +323,7 @@ export class MechDesigner {
       el("p", { className: "lead", textContent: say(preview?.frame?.skeleton.sockets.length ? "Designer.EquipHint" : "Designer.NoPoints") }),
       shown.length ? el("h3", { textContent: say("Designer.OnMech") }) : null,
       shown.length ? el("ul", { className: "rows" }, ...shown.map(one => el("li", {}, el("button", {
-        type: "button", "aria-pressed": one.key === this.#entry ? "true" : "false",
+        type: "button", "aria-pressed": one.key === this.#entry ? "true" : "false", "data-gear": one.key,
         onclick: () => this.#pickEntry(one.key)
       }, el("span", { textContent: one.name }), el("small", { textContent: plainMount(mountOf(one)) }))))) : null,
       selected ? this.#entryCard(selected) : null,
@@ -342,12 +345,46 @@ export class MechDesigner {
       sizes ? el("small", { textContent: sizes }) : null);
   }
 
+  #lookChoice(one) {
+    const own = one.kind;
+    const melee = this.#gearFor({ key: one.key }).weapon === "Melee";
+    const parts = this.#entries.filter(entry => entry.kind !== "mech" && kindFor(entry) === own);
+    const ranked = [...parts.filter(entry => (entry.weapon === "Melee") === melee), ...parts.filter(entry => (entry.weapon === "Melee") !== melee)];
+    const current = ranked.some(entry => entry.csgid === one.csgid) ? [] : [{ value: one.csgid, label: say("Designer.StandIn") }];
+    const options = [...current, ...ranked.map(entry => ({ value: entry.csgid, label: entry.name }))];
+
+    return el("label", { className: "field" }, el("span", { textContent: say("Designer.LooksLike") }),
+      el("select", { onchange: event => this.#useLook(one.key, event.target.value) },
+        ...options.map(option => el("option", { value: option.value, textContent: option.label, selected: option.value === one.csgid }))));
+  }
+
+  #useLook(key, csgid) {
+    this.#edit(design => {
+      const one = design.find(key);
+
+      if (one) one.csgid = csgid;
+    });
+  }
+
+  #gearUnder(event) {
+    const row = document.elementFromPoint(event.clientX, event.clientY)?.closest("[data-gear]");
+
+    if (row) return row.dataset.gear;
+    if (!this.#isOverMech(event) || !this.#view) return null;
+
+    const box = this.#stage.getBoundingClientRect();
+    const ratio = this.#view.ratio;
+
+    return this.#gearAt(this.#view.pick([(event.clientX - box.left) * ratio, (event.clientY - box.top) * ratio]))?.key ?? null;
+  }
+
   #entryCard(one) {
     const place = one.place ?? {};
     const slots = this.#slotsOf(one);
 
     return el("div", { className: "card" },
       el("h4", { textContent: one.name }),
+      this.#lookChoice(one),
       el("label", { className: "field" }, el("span", { textContent: say("Designer.Size") }), el("input", { type: "range", min: 0.4, max: 2, step: 0.05, value: place.size ?? 1, "data-field": "size" })),
       ...TURNS.map(turn => el("label", { className: "field" }, el("span", { textContent: say(`Designer.Turn.${turn}`) }),
         el("input", { type: "range", min: -LIMITS[turn], max: LIMITS[turn], step: 5, value: place[turn] ?? 0, "data-field": "turn", "data-turn": turn }))),
@@ -772,8 +809,16 @@ export class MechDesigner {
       return;
     }
 
-    if (point) this.#equip(what, point.name, point.holder);
-    else if (isOnMech && !this.#isOverMech(event)) this.#takeOff(what.key);
+    if (point) return this.#equip(what, point.name, point.holder);
+
+    const under = what.key ? null : this.#gearUnder(event);
+
+    if (under) {
+      this.#useLook(under, what.csgid);
+      this.#entry = under;
+    } else if (isOnMech && !this.#isOverMech(event)) {
+      this.#takeOff(what.key);
+    }
   }
 
   #equip(what, at, holder = null) {
