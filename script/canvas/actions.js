@@ -1,6 +1,8 @@
 /*
   Mechs act along with LANCER: they get ready while someone rolls, act when that is
-  done, and react when they are hit.
+  done, and react when they are hit. As in the old module, a mech aims at its first
+  target while it attacks (see aiming.js): the waist or turret turns as far as it can,
+  the whole mech the rest, whichever way its token faces, and it turns back after.
 
   Ready is the attack played up to its first mark, such as "fire" or "hit", aimed at
   the first target, and held there (see token-picture.js). When the roll is done it is
@@ -142,6 +144,9 @@ function perform(message) {
 
 function getReady(uuid, token, picture, { name, lid, melee, targets }) {
   const act = start(uuid, { token, picture, name, lid, melee, place: placeOf(picture, lid) });
+
+  aim(act, targets[0]);
+
   const points = pointsOf(act, targets[0]);
   const playing = picture.ready(name, { place: act.place, points });
 
@@ -162,6 +167,8 @@ function begin(uuid, { token, picture, name, lid = "", melee = false, targets = 
   act.place = place ?? (picture ? placeOf(picture, lid) : "");
   act.targets = targets;
   act.isDone = true;
+
+  aim(act, targets[0]);
 
   if (game.modules.get(EFFECTS)?.active) later(act, TIMES.effect, () => fire(act, true));
   else fire(act, true);
@@ -230,6 +237,19 @@ function weaponOf(act) {
   return item ? mountOf(act.picture, item) : null;
 }
 
+function aim(act, id) {
+  const target = canvas.tokens.get(id);
+  const { token, picture } = act;
+
+  if (!picture || !target || target === token) return;
+
+  const heading = Math.toDegrees(Math.atan2(token.center.x - target.center.x, token.center.y - target.center.y));
+  const rise = (target.document.elevation - token.document.elevation) * canvas.dimensions.distancePixels;
+  const pitch = Math.toDegrees(Math.atan2(rise, Math.hypot(target.center.x - token.center.x, target.center.y - token.center.y)));
+
+  picture.aim({ yaw: Math.normalizeDegrees(heading - tokenMechs.headingOf(token) + 180) - 180, pitch, place: act.place });
+}
+
 function pointsOf(act, id) {
   const target = canvas.tokens.get(id);
 
@@ -249,7 +269,7 @@ function pointOf(token, target, picture) {
   const right = (target.center.x - token.center.x) / scale;
   const up = (token.center.y - target.center.y) / scale;
   const rise = (target.document.elevation - token.document.elevation) * canvas.dimensions.distancePixels / scale;
-  const turn = picture.heading * RADIANS;
+  const turn = (tokenMechs.headingOf(token) + picture.aimedTurn) * RADIANS;
   const cos = Math.cos(turn);
   const sin = Math.sin(turn);
 
@@ -357,5 +377,8 @@ function clear(act) {
 function forget(act) {
   clear(act);
 
-  if (acts.get(act.uuid) === act) acts.delete(act.uuid);
+  if (acts.get(act.uuid) !== act) return;
+
+  acts.delete(act.uuid);
+  act.picture?.aim(null);
 }

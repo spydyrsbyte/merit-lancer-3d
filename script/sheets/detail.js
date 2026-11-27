@@ -139,7 +139,7 @@ function notesOf(assembly) {
   return el("ul", { className: "merit3d-notes" }, ...assembly.notes.map(text => el("li", { textContent: text })));
 }
 
-async function rebuild(item) {
+export async function rebuild(item) {
   await item.update({ "system.mechdata.meshes": [] }, { [ID]: { edited: true } });
   ui.notifications.info(say("Detail.Updated", { name: item.name }));
 }
@@ -150,7 +150,7 @@ async function original(item) {
   await item.update({ ...removed, "system.mechdata.at": "", "system.mechdata.meshes": [] }, { [ID]: { edited: true } });
 }
 
-async function openPicture(item) {
+export async function openPicture(item) {
   const file = await pickPicture();
   const opened = file && await readPicture(new Uint8Array(await file.arrayBuffer()));
 

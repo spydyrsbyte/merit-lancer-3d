@@ -1,6 +1,10 @@
 /*
   The settings. How mechs are drawn is up to each player, as it is their computer which
-  draws them. Whether they act along with LANCER, and how they turn, is up to the world.
+  draws them. Whether they act along with LANCER, how they turn, how fast their tokens
+  move (Foundry moves tokens at 6 spaces a second) and how fast the walk plays, is up to
+  the world. The walk pace is how many steps a mech takes for the ground
+  it covers: 1 is exactly as many as its feet need, less is fewer and longer, which looks
+  better although the feet slide a little.
 
   Quality is how many pixels of a texture there are to one on the screen, and how often a
   second they are drawn.
@@ -31,6 +35,8 @@ export function registerSettings(redraw) {
   register("motion", { scope: "client", type: String, default: "always", choices: Object.fromEntries(MOTION.map(key => [key, `MERIT3D.Setting.motion.${key}`])) });
   register("actions", { scope: "world", type: Boolean, default: true });
   register("turnLocked", { scope: "world", type: Boolean, default: true, onChange: redraw });
+  register("speed", { scope: "world", type: Number, default: 4.5, range: { min: 1, max: 10, step: 0.5 } });
+  register("walkPace", { scope: "world", type: Number, default: 0.5, range: { min: 0.1, max: 1.5, step: 0.05 } });
 
   game.settings.register(ID, "uniforms", { scope: "world", config: false, type: Object, default: {} });
 }

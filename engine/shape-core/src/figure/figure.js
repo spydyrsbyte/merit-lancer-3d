@@ -48,6 +48,10 @@ export class Figure {
     this.take(new Pose());
   }
 
+  get decals() {
+    return this.rig.decals;
+  }
+
   get sockets() {
     return this.rig.sockets;
   }

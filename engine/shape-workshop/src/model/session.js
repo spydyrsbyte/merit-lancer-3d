@@ -46,7 +46,7 @@ export class Session {
   start(name = "New shape") {
     const json = {
       version: VERSION, id: uuid(), revision: 1, name, author: PERSON,
-      shapes: [], sockets: [], plugs: [], insignia: [], materials: {}, poses: {}
+      shapes: [], sockets: [], plugs: [], decals: [], materials: {}, poses: {}
     };
 
     const rules = this.book.all.at(0);

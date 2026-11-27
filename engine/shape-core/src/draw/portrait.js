@@ -24,6 +24,8 @@ export async function portrait(shape, size = SIZE) {
   figure.land();
   camera.fit(figure.bounds);
 
+  await renderer.decals.prepare(figure);
+
   renderer.clear();
   renderer.draw(figure, camera);
 

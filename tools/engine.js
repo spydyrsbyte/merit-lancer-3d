@@ -20,6 +20,7 @@ const PROJECTS = join(MODULE, "..");
 
 const COPIES = [
   ["shape-core/src", "engine/shape-core/src"],
+  ["shape-core/decals", "decals"],
   ["shape-core/rules", "engine/shape-core/rules"],
   ["shape-animation/src", "engine/shape-animation/src"],
   ["shape-workshop/src", "engine/shape-workshop/src"],

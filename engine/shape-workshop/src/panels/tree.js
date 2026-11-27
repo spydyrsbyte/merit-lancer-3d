@@ -16,7 +16,7 @@ const SPOTS = {
   joint: "Joint: a place which bends",
   socket: "Socket: where others are attached",
   plug: "Plug: where this shape is held",
-  insignia: "Insignia: where a picture can go"
+  decals: "Decal: where artwork can go"
 };
 
 export function treePanel(workshop) {

@@ -2,7 +2,7 @@ export { Shape } from "./shape/shape.js";
 export { Author } from "./file/author.js";
 export { Placement } from "./shape/placement.js";
 export { uuid } from "./file/uuid.js";
-export { Insignia } from "./socket/insignia.js";
+export { DecalPlace } from "./socket/decal.js";
 export { Movement } from "./socket/movement.js";
 export { isSide, OPPOSITE, sidePoint, SIDES } from "./socket/sides.js";
 export { Plug, Socket } from "./socket/socket.js";
@@ -32,3 +32,7 @@ export { isStandard, Material, PATTERNS, standard, STANDARD_NAMES } from "./pain
 export { Renderer } from "./draw/renderer.js";
 export { Camera } from "./draw/camera.js";
 export { portrait } from "./draw/portrait.js";
+
+export { Decals } from "./decal/decals.js";
+export { importSvg, exportSvg } from "./decal/svg.js";
+export { DecalPicture, decalCanvas } from "./decal/picture.js";

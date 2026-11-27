@@ -9,6 +9,7 @@
 
 import { COPY_LAYOUT, copyNumbers, CORNER_LAYOUT } from "./layout.js";
 import { CORNER_PROGRAM, DOT_PROGRAM, SPOTLIGHTS } from "./shader.js";
+import { DecalTextures, decalBack, DECAL_VERTEX, DECAL_FRAGMENT } from "./decals.js";
 import { Stock } from "./stock.js";
 
 const UNIFORMS = [
@@ -20,12 +21,17 @@ export class Renderer {
   #gl;
   #program;
   #uniforms;
+  #decalProgram;
+  #decalUniforms;
 
   constructor(gl) {
     this.#gl = gl;
     this.#program = this.#build();
     this.#uniforms = Object.fromEntries(UNIFORMS.map(name => [name, gl.getUniformLocation(this.#program, name)]));
 
+    this.#decalProgram = this.#build(DECAL_VERTEX, DECAL_FRAGMENT);
+    this.#decalUniforms = Object.fromEntries(["uView", "uCenter", "uExtent", "uDepth", "uPixel", "uBack", "uOrigin", "uArt", "uSize", "uOpacity", "uGlow", "uWear"].map(name => [name, gl.getUniformLocation(this.#decalProgram, name)]));
+    this.decals = new DecalTextures(gl);
     this.stock = new Stock(gl);
     this.shine = true;
     this.calls = 0;
@@ -69,6 +75,7 @@ export class Renderer {
 
     for (const [mesh, pieces] of groups) this.#drawCopies(mesh, figure, pieces);
 
+    this.#drawDecals(figure, camera, area[2]);
     gl.bindVertexArray(null);
   }
 
@@ -126,12 +133,60 @@ export class Renderer {
     this.calls++;
   }
 
-  #build() {
+  close() {
+    this.decals.close();
+    this.stock.close();
+    this.#gl.deleteProgram(this.#program);
+    this.#gl.deleteProgram(this.#decalProgram);
+  }
+
+  #drawDecals(figure, camera, width) {
+    if (!figure.decals.some(place => place.decal.art)) return;
+    const gl = this.#gl;
+    const previous = this.#uniforms;
+
+    gl.useProgram(this.#decalProgram);
+    this.#uniforms = this.#decalUniforms;
+    this.#aim(camera, width);
+    this.#uniforms = previous;
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    gl.depthMask(false);
+    gl.enable(gl.POLYGON_OFFSET_FILL);
+    gl.polygonOffset(-1, -1);
+
+    const uniforms = this.#decalUniforms;
+
+    for (const place of figure.decals) {
+      const entry = this.decals.entry(figure, place);
+
+      if (!entry?.texture) continue;
+
+      const back = decalBack(place);
+
+      gl.activeTexture(gl.TEXTURE0);
+      gl.bindTexture(gl.TEXTURE_2D, entry.texture);
+      gl.uniform1i(uniforms.uArt, 0);
+      gl.uniformMatrix3fv(uniforms.uBack, false, back.axes.flat());
+      gl.uniform3fv(uniforms.uOrigin, place.world.origin);
+      gl.uniform3fv(uniforms.uSize, place.decal.size);
+      gl.uniform1f(uniforms.uOpacity, place.decal.opacity);
+      gl.uniform1f(uniforms.uGlow, place.decal.glow ? 1 : 0);
+      gl.uniform1f(uniforms.uWear, place.decal.wear);
+      this.#drawCopies(place.piece.mesh, figure, [place.piece]);
+    }
+
+    gl.disable(gl.POLYGON_OFFSET_FILL);
+    gl.depthMask(true);
+    gl.disable(gl.BLEND);
+  }
+
+  #build(vertex = CORNER_PROGRAM, fragment = DOT_PROGRAM) {
     const gl = this.#gl;
     const program = gl.createProgram();
 
-    gl.attachShader(program, this.#compile(gl.VERTEX_SHADER, CORNER_PROGRAM));
-    gl.attachShader(program, this.#compile(gl.FRAGMENT_SHADER, DOT_PROGRAM));
+    gl.attachShader(program, this.#compile(gl.VERTEX_SHADER, vertex));
+    gl.attachShader(program, this.#compile(gl.FRAGMENT_SHADER, fragment));
 
     for (const { name, slot } of [...CORNER_LAYOUT.attributes, ...COPY_LAYOUT.attributes]) {
       gl.bindAttribLocation(program, slot, name);

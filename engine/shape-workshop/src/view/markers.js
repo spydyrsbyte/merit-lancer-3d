@@ -1,6 +1,6 @@
 /*
   The Markers are the lines over the figure: the edges of what is selected, the cuts,
-  and where the sockets, joints, plugs and insignia are. Those have a dot which can be
+  and where the sockets, joints, plugs and decals are. Those have a dot which can be
   clicked, as there is nothing else to hit.
 
   The arrow of a socket points the way its up does.
@@ -11,7 +11,7 @@
 import { Bounds, Rig } from "../../../shape-core/src/index.js";
 import { boxEdges, edgesOf } from "./edges.js";
 
-export const MARKER_COLORS = { joint: "#f0c35a", socket: "#5fd3ff", plug: "#c79bff", insignia: "#8ee08a", cut: "#f26b61" };
+export const MARKER_COLORS = { joint: "#f0c35a", socket: "#5fd3ff", plug: "#c79bff", decals: "#8ee08a", cut: "#f26b61" };
 
 const SELECTED = "#f0a63a";
 const GHOST = "#6df0d3";
@@ -55,7 +55,7 @@ export function drawMarkers(context, view, draft, markers, selection) {
     const color = isSelected ? SELECTED : MARKER_COLORS[marker.kind];
 
     if (marker.kind === "cut") drawLines(context, view, cutLines(draft, marker), color, DASH);
-    if (marker.kind === "insignia") drawLines(context, view, insigniaLines(marker), color, DASH);
+    if (marker.kind === "decals") drawLines(context, view, decalsLines(marker), color, DASH);
 
     drawDot(context, view, marker, color, isSelected);
   }
@@ -135,7 +135,7 @@ function cutLines(draft, { item, place }) {
   return shapeLines(draft.thing(item.id).shape, place);
 }
 
-function insigniaLines({ item, place }) {
+function decalsLines({ item, place }) {
   const half = item.value.size.map(number => number / 2);
   const lines = boxEdges(half.map(number => -number), half);
 

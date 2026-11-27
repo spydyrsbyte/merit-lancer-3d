@@ -1,6 +1,6 @@
 /*
   The Picker finds what is under the pointer: which piece of a figure, where on it,
-  and which way that spot looks.
+  which way that spot looks, and the surface it is on.
 
   It goes through all triangles and takes the closest which the ray hits. The known
   way to do that is called "Moller-Trumbore". Where the corners of a figure are in the
@@ -41,6 +41,7 @@ export function pick(figure, ray) {
   return {
     piece,
     path: piece.chain.length ? piece.path : surface.path.slice(0, 1),
+    surface,
     point: ray.from.map((number, axis) => number + ray.toward[axis] * distance),
     normal: facing(points, ray)
   };

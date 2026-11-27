@@ -1,0 +1,453 @@
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "id": "12aa6e81-ebc0-4270-a080-71cb9421765a",
+  "revision": 1,
+  "name": "Emblems",
+  "author": {
+    "ai": 1
+  },
+  "decals": [
+    {
+      "id": "6f209c01-c546-47e2-b530-230f8a412b54",
+      "name": "star",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "path",
+          "d": "M50 2L61.16791979355699 34.628677106876L95.65071278216737 35.16718427000252L68.07007380960792 55.871322893124L78.2136921100387 88.83281572999748L50 69L21.786307889961293 88.83281572999748L31.929926190392084 55.87132289312401L4.349287217832632 35.16718427000251L38.83208020644301 34.628677106876Z",
+          "fill": "paint:accent",
+          "fill-rule": "evenodd"
+        }
+      ]
+    },
+    {
+      "id": "9d3c21f5-c877-4ddb-9a6d-1bb5e9352561",
+      "name": "skull",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "path",
+          "d": "M50 5C26 5 9 22 9 45c0 14 6 24 16 31v17h50V76c10-7 16-17 16-31C91 22 74 5 50 5ZM22 47a11 11 0 1 0 22 0a11 11 0 1 0 -22 0ZM56 47a11 11 0 1 0 22 0a11 11 0 1 0 -22 0ZM50 58l8 15H42ZM37 81h4v12h-4ZM48 81h4v12h-4ZM59 81h4v12h-4Z",
+          "fill": "paint:accent",
+          "fill-rule": "evenodd"
+        }
+      ]
+    },
+    {
+      "id": "1ba3d833-579f-43f3-8da5-96adc836ea32",
+      "name": "chevrons",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "path",
+          "d": "M8 40L50 8L92 40V62L50 30L8 62ZM8 74L50 42L92 74V96L50 64L8 96Z",
+          "fill": "paint:accent",
+          "fill-rule": "evenodd"
+        }
+      ]
+    },
+    {
+      "id": "4320add2-91eb-477d-acbb-4c6bb2ce96be",
+      "name": "arrow",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "path",
+          "d": "M50 4L94 52H67V96H33V52H6Z",
+          "fill": "paint:accent",
+          "fill-rule": "evenodd"
+        }
+      ]
+    },
+    {
+      "id": "1f484575-ae38-472f-87db-0f93682abfc3",
+      "name": "roundel",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "path",
+          "d": "M4 50a46 46 0 1 0 92 0a46 46 0 1 0 -92 0ZM18 50a32 32 0 1 0 64 0a32 32 0 1 0 -64 0ZM32 50a18 18 0 1 0 36 0a18 18 0 1 0 -36 0Z",
+          "fill": "paint:accent",
+          "fill-rule": "evenodd"
+        }
+      ]
+    },
+    {
+      "id": "251eadca-7347-4fd2-9260-737d4d76138c",
+      "name": "cross",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "path",
+          "d": "M36 5H64V36H95V64H64V95H36V64H5V36H36Z",
+          "fill": "paint:accent",
+          "fill-rule": "evenodd"
+        }
+      ]
+    },
+    {
+      "id": "7bd0fcfe-cb0c-4a62-8551-55549f358edf",
+      "name": "bolt",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "path",
+          "d": "M60 3L16 57H44L34 97L84 38H55Z",
+          "fill": "paint:accent",
+          "fill-rule": "evenodd"
+        }
+      ]
+    },
+    {
+      "id": "e65ad2d6-b84c-4602-97b1-4c463a9242f5",
+      "name": "wing",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "path",
+          "d": "M4 62C24 20 58 10 97 12C90 25 82 31 70 34C80 34 85 34 90 33C83 46 72 51 58 52C67 53 72 53 78 52C66 68 38 76 4 62Z",
+          "fill": "paint:accent",
+          "fill-rule": "evenodd"
+        }
+      ]
+    },
+    {
+      "id": "70905557-fc6d-4781-9a90-f3c25d1ce126",
+      "name": "claws",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "path",
+          "d": "M20 6L36 4L24 60L14 96L10 92ZM46 4L62 4L48 62L38 98L33 94ZM72 4L88 8L74 62L62 96L58 92Z",
+          "fill": "paint:accent",
+          "fill-rule": "evenodd"
+        }
+      ]
+    },
+    {
+      "id": "a88a7272-cf01-4c23-ad2c-189fb96c0252",
+      "name": "target",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "path",
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0ZM19 50a31 31 0 1 0 62 0a31 31 0 1 0 -62 0ZM47 2H53V36H47ZM47 64H53V98H47ZM2 47H36V53H2ZM64 47H98V53H64Z",
+          "fill": "paint:accent",
+          "fill-rule": "evenodd"
+        }
+      ]
+    },
+    {
+      "id": "8da0ea72-225a-431b-b847-8a9b9ad8c4ad",
+      "name": "hexagon",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "path",
+          "d": "M50 2L91.56921938165306 26.000000000000004L91.56921938165306 74L50 98L8.430780618346944 74L8.430780618346944 25.999999999999993ZM50 14L81.17691453623979 32L81.17691453623979 68L50 86L18.823085463760208 68L18.82308546376021 31.999999999999996ZM50 30L67.32050807568878 40L67.32050807568878 60L50 70L32.67949192431122 60L32.67949192431123 40Z",
+          "fill": "paint:accent",
+          "fill-rule": "evenodd"
+        }
+      ]
+    },
+    {
+      "id": "7d15dd51-33a5-4c3a-b4df-ddf5823e0127",
+      "name": "warning",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "path",
+          "d": "M50 6L97 92H3ZM50 24L18 84H82ZM46 42H54L52.5 66H47.5ZM46 70H54V78H46Z",
+          "fill": "paint:accent",
+          "fill-rule": "evenodd"
+        }
+      ]
+    },
+    {
+      "id": "7917f331-edbd-4ced-9d35-77e765b1371a",
+      "name": "hazard",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "polygon",
+          "points": "-100,100 0,0 22,0 -78,100",
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "polygon",
+          "points": "-56,100 44,0 66,0 -34,100",
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "polygon",
+          "points": "-12,100 88,0 110,0 10,100",
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "polygon",
+          "points": "32,100 132,0 154,0 54,100",
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "polygon",
+          "points": "76,100 176,0 198,0 98,100",
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "polygon",
+          "points": "120,100 220,0 242,0 142,100",
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "polygon",
+          "points": "164,100 264,0 286,0 186,100",
+          "fill": "paint:accent"
+        }
+      ],
+      "fit": "stretch"
+    },
+    {
+      "id": "697f3434-3ee5-4e65-a39e-d81cd4abe8d5",
+      "name": "band",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 100,
+          "fill": "paint:accent"
+        }
+      ],
+      "fit": "stretch"
+    },
+    {
+      "id": "5a50cfed-359d-4b6e-8242-3694c30a3017",
+      "name": "barcode",
+      "description": "",
+      "author": {
+        "ai": 1
+      },
+      "viewBox": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "svg": [
+        {
+          "tag": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 2,
+          "height": 100,
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "rect",
+          "x": 10.4,
+          "y": 0,
+          "width": 6.800000000000001,
+          "height": 100,
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "rect",
+          "x": 22.400000000000002,
+          "y": 0,
+          "width": 3.6,
+          "height": 100,
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "rect",
+          "x": 28.000000000000004,
+          "y": 0,
+          "width": 8.4,
+          "height": 100,
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "rect",
+          "x": 43.2,
+          "y": 0,
+          "width": 5.2,
+          "height": 100,
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "rect",
+          "x": 52.00000000000001,
+          "y": 0,
+          "width": 2,
+          "height": 100,
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "rect",
+          "x": 62.400000000000006,
+          "y": 0,
+          "width": 6.800000000000001,
+          "height": 100,
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "rect",
+          "x": 74.4,
+          "y": 0,
+          "width": 3.6,
+          "height": 100,
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "rect",
+          "x": 80,
+          "y": 0,
+          "width": 8.4,
+          "height": 100,
+          "fill": "paint:accent"
+        },
+        {
+          "tag": "rect",
+          "x": 95.2,
+          "y": 0,
+          "width": 4.799999999999997,
+          "height": 100,
+          "fill": "paint:accent"
+        }
+      ],
+      "fit": "stretch"
+    }
+  ],
+  "meta": {}
+}

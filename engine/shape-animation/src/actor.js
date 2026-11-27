@@ -37,6 +37,9 @@
     actor.update(16, { slices: 3, animations: { walk: { sliceSpeed: 0.02 }, "attack:3": { action: "pause" } } })
 
   When the body stops, the actor goes back to how it stands, fading.
+
+  aim is a pose laid over everything which plays, such as a waist turned toward a
+  target. Whoever uses the actor sets it; it is nothing unless they do.
 */
 
 import { Pose, Rules, SLICES_PER_SECOND, Transform } from "../../shape-core/src/index.js";
@@ -63,6 +66,7 @@ export class Actor {
     this.id = id;
     this.size = size;
     this.place = new Transform();
+    this.aim = new Pose();
     this.rules = layered(figure.shape, rules);
 
     this.#library = library;
@@ -265,7 +269,7 @@ export class Actor {
     const aims = [...this.#actions.values()].map(({ player }) => new Pose().toward(player.aim, weightOf(player)));
     const aim = aims.reduce((sum, one) => sum.plus(one), new Pose());
 
-    if (aim.bends.size) this.figure.take(pose.plus(aim));
+    if (aim.bends.size || this.aim.bends.size) this.figure.take(pose.plus(aim).plus(this.aim));
   }
 
   #pose() {

@@ -1,7 +1,7 @@
 /*
   The Mover is what dragging does with what is selected:
     a handle       as the gizmo says
-    Shift+drag     across the ground, and a socket, a plug or insignia sticks to what is
+    Shift+drag     across the ground, and a socket, a plug or decals sticks to what is
                    under the pointer
     Ctrl+drag      up and down
 
@@ -41,7 +41,7 @@ export class Mover {
     const { position = STILL, rotation = STILL, size } = item.value;
     const target = { ground: found.ground, position, rotation };
 
-    if (item.kind === "insignia") return { ...target, size, natural: SAME, growth: [BOTH_WAYS, BOTH_WAYS, BOTH_WAYS], isTimes: false };
+    if (item.kind === "decals") return { ...target, size, natural: SAME, growth: [BOTH_WAYS, BOTH_WAYS, BOTH_WAYS], isTimes: false };
     if (item.kind === "shape") return { ...target, size, ...this.#sizing(item) };
 
     return target;

@@ -85,7 +85,7 @@ export class AnimationWindow extends Floating {
     this.#stage = el("div", { className: "stage" }, this.#views());
     this.#bar = el("div", { className: "animation-bar" });
     this.#lanes = el("div", { className: "animation-lanes" });
-    this.#lists = el("div");
+    this.#lists = el("div", { className: "animation-suggestions" });
     this.body.append(this.#left, el("div", { className: "animation-middle" }, this.#stage, this.#bar, this.#lanes), this.#right, this.#lists);
     this.element.addEventListener("keydown", event => this.#key(event));
   }

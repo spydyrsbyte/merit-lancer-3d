@@ -52,6 +52,7 @@ function shapeTools(workshop) {
     el("div", { className: "grow" }, textField("Name", draft.name, { key: "shape name", done: name => workshop.setShape({ name: name || draft.name }) })),
     el("div", { className: "modes" }, ...modes),
     el("div", { className: "buttons" },
+      button("Decals", () => workshop.openWindow("decals")),
       button("Materials", () => workshop.openWindow("materials"), { symbol: "palette" }),
       button("Shapes", () => workshop.openWindow("shapes"), { symbol: "shapes", title: "The shapes which are open, to place them" }),
       button("Poses", () => workshop.openWindow("poses"), { symbol: "pose" }),

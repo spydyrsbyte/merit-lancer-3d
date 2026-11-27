@@ -66,6 +66,11 @@ export class Stock {
     this.#palettes.delete(figure);
   }
 
+  close() {
+    for (const mesh of this.#meshes.keys()) this.dropMesh(mesh);
+    for (const figure of this.#palettes.keys()) this.dropFigure(figure);
+  }
+
   #loadMesh(mesh) {
     const gl = this.#gl;
     const array = gl.createVertexArray();

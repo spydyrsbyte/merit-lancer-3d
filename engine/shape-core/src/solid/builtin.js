@@ -19,7 +19,7 @@ const SEGMENTS = 24;
 const CIRCLE = Math.PI * 2;
 const TOUCHING = 1e-9;
 
-const NO_SKELETON = { body: [], cuts: [], limbs: [], sockets: [], lost: [], idle: [], places: new Map() };
+const NO_SKELETON = { decals: [], body: [], cuts: [], limbs: [], sockets: [], lost: [], idle: [], places: new Map() };
 
 class Builtin {
   #solids;
@@ -36,7 +36,7 @@ class Builtin {
     this.joints = [];
     this.sockets = [];
     this.plugs = [];
-    this.insignia = [];
+    this.decals = [];
     this.materials = {};
     this.pose = "";
     this.poses = {};

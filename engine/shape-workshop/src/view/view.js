@@ -72,6 +72,7 @@ export class View {
     element.prepend(...canvases);
     this.#overlay.tabIndex = 0;
     this.#renderer = Renderer.on(this.#picture);
+    this.#renderer.decals.changed = () => this.draw();
     this.#listen();
   }
 

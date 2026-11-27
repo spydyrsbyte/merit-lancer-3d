@@ -17,7 +17,7 @@
   anything else may use them too, such as to sort. What they mean is up to
   the rules. A placement can add some.
 
-  Insignia are places with a name where a picture can go.
+  DecalPlace are places with a name where a picture can go.
 
   A placement marked as a cut is taken out of everything else in the body of the
   shape, and out of nothing outside of it. On a joint it cuts nothing. Once baked, the
@@ -40,7 +40,7 @@ import { list, record, text, vector, words } from "../input/clean.js";
 import { MeshBuilder } from "../mesh/builder.js";
 import { Mesh } from "../mesh/mesh.js";
 import { PLACEHOLDER } from "../solid/builtin.js";
-import { Insignia } from "../socket/insignia.js";
+import { DecalPlace } from "../socket/decal.js";
 import { Plug, Socket } from "../socket/socket.js";
 import { Transform } from "../space/transform.js";
 import { Placement } from "./placement.js";
@@ -65,7 +65,7 @@ export class Shape extends Heading {
     this.placements = json.shapes ? records(json.shapes).map(entry => new Placement(entry)) : null;
     this.sockets = records(json.sockets).map(entry => new Socket(entry));
     this.plugs = records(json.plugs).map(entry => new Plug(entry));
-    this.insignia = records(json.insignia).map(entry => new Insignia(entry));
+    this.decals = records(json.decals ?? json.insignia).map(entry => new DecalPlace(entry));
     this.keywords = words(json.keywords);
     this.uri = String(record(json.data).uri ?? "");
 
@@ -197,10 +197,10 @@ export class Shape extends Heading {
   }
 
   toJSON() {
-    const { keywords, sockets, plugs, insignia, materials, pose, poses, animations, meta } = this;
+    const { keywords, sockets, plugs, decals, materials, pose, poses, animations, meta } = this;
     const recipe = this.placements ? { shapes: this.placements } : {};
 
-    return { ...this.heading, keywords, ...recipe, sockets, plugs, insignia, data: { uri: this.uri }, materials, pose, poses, animations, meta };
+    return { ...this.heading, keywords, ...recipe, sockets, plugs, decals, data: { uri: this.uri }, materials, pose, poses, animations, meta };
   }
 
   #bake(stamp) {

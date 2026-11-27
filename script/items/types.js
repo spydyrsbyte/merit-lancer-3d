@@ -12,9 +12,16 @@
                 { shape, stamp, joint, data }, where data is the mesh, deflated, in Base64
     needsToken  the token picture could not be saved by whoever changed it, and waits
                 for a GM
+    place       for gear: how it sits on its mount, as the Mech Designer sets it: size,
+                turn, tilt and roll, flip, which colors of the mech its own colors are
+                (paint), and off, whether it is taken off the mech
+    insignia    for a mech: what is at each of its insignia locations
     image       how its token picture looks: the style and color of its ring, the
                 background inside of it (nothing is clear), and the camera: heading,
                 tilt and zoom (see tokens/token-image.js)
+
+  Gear which the Designer put on by hand, and which LANCER does not have, is marked
+  with the flag byHand, so it is kept when the items follow LANCER.
 
   customization holds shapes by their id, as standard shape JSON. One there is used
   instead of the shape with the same id anywhere else.
@@ -40,6 +47,8 @@ class MechData extends foundry.abstract.TypeDataModel {
         at: new StringField({ blank: true, initial: "" }),
         meshes: new ArrayField(new ObjectField()),
         needsToken: new BooleanField({ initial: false }),
+        place: new ObjectField(),
+        insignia: new ObjectField(),
         image: new SchemaField({
           ring: new StringField({ blank: false, initial: "plain" }),
           color: new StringField({ blank: true, initial: "#c8d0d8" }),

@@ -55,12 +55,18 @@ function spotFields(workshop, item) {
   const { id, kind, value } = item;
   const common = [...attachment(workshop, item), ...place(workshop, item)];
 
-  if (kind === "insignia") {
+  if (kind === "decals") {
     return [
       textField("Name", value.name, { done: name => workshop.set(id, { name: name || value.name }) }),
       note("Shift+drag puts it on what is under the pointer."),
       ...common,
       size(workshop, item, "Size", 1),
+      textField("Text values (JSON)", JSON.stringify(value.values ?? {}), { done: text => { try { workshop.set(id, { values: JSON.parse(text) }); } catch (error) { workshop.say(error.message); } } }),
+      button("Choose artwork", () => workshop.openWindow("decals")),
+      button("Clear artwork", () => workshop.set(id, { art: undefined })),
+      numberField("Opacity", value.opacity ?? 1, { min: 0.05, max: 1, step: 0.05, set: opacity => workshop.live(id, { opacity }), done: () => workshop.done() }),
+      numberField("Wear", value.wear ?? 0, { min: 0, max: 1, step: 0.05, set: wear => workshop.live(id, { wear }), done: () => workshop.done() }),
+      checkField("Glow", value.glow === true, glow => workshop.set(id, { glow })),
       numberField("Turn of the picture", value.turn ?? 0, { step: 15, set: turn => workshop.live(id, { turn }), done: () => workshop.done() })
     ];
   }

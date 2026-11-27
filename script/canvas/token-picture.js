@@ -15,6 +15,10 @@
   plays in its place is over, and one with join "pre" makes others wait for it. Any
   other replaces what plays in its place (see shape-animation's actor.js).
 
+  It aims as the old module did (see aiming.js): what carries the weapon turns as far as
+  it can, and the whole mech turns the rest, away from where its token faces (turned, in
+  degrees). It eases into an aim, and out of it, over AIM_TIME milliseconds.
+
   An action can be made ready: it plays up to its first mark which is not its end,
   such as "fire" or "hit", and is held there until it is released. So a mech aims while
   the dice are rolled, and shoots when they are.
@@ -25,16 +29,20 @@
 */
 
 import { Actor } from "../../engine/shape-animation/src/index.js";
-import { Bounds, Camera, Figure, Renderer } from "../../engine/shape-core/src/index.js";
+import { Bounds, Camera, Figure, Pose, Renderer } from "../../engine/shape-core/src/index.js";
+import { shareAim } from "./aiming.js";
 
 export const TILT = 35;
 const ROOM = 1.35;
 const SMALLEST = 128;
 const LARGEST = 1024;
 const END = "end";
+const AIM_TIME = 450;
+const NO_AIM = { body: 0, pose: new Pose() };
 const MUZZLE = "muzzle";
 
 let shared = null;
+const withMotion = new WeakSet();
 
 export function sharedRenderer() {
   if (shared) return shared;
@@ -54,6 +62,7 @@ export class TokenPicture {
   #held = new Map();
   #blocked = new Set();
   #carried;
+  #aim = { from: NO_AIM, to: NO_AIM, time: AIM_TIME };
 
   constructor(assembly, actor, figure) {
     this.assembly = assembly;
@@ -62,6 +71,7 @@ export class TokenPicture {
     this.texture = null;
     this.dirty = true;
     this.heading = 0;
+    this.turned = 0;
     this.marks = [];
 
     this.#carried = assembly.shape.parts.filter(placement => placement.at).map(placement => placement.id);
@@ -71,7 +81,10 @@ export class TokenPicture {
   static async of(assembly, motion) {
     const figure = new Figure(assembly.shape);
 
-    assembly.library.add(motion.shelf);
+    if (!withMotion.has(assembly.library)) {
+      assembly.library.add(motion.shelf);
+      withMotion.add(assembly.library);
+    }
 
     for (const json of motion.files) await assembly.library.animation(json.id);
 
@@ -86,6 +99,41 @@ export class TokenPicture {
 
   get anchorY() {
     return 0.5 + this.#camera.center[1] / this.worldSize;
+  }
+
+  aim(target) {
+    const to = target ? shareAim(this.figure, target) : NO_AIM;
+
+    this.#aim = { from: this.#aimed(), to, time: 0 };
+    this.dirty = true;
+  }
+
+  get aimedTurn() {
+    return this.#aim.to.body;
+  }
+
+  #aimed() {
+    const { from, to, time } = this.#aim;
+    const share = Math.min(1, time / AIM_TIME);
+
+    if (share >= 1) return to;
+
+    const smooth = share * share * (3 - 2 * share);
+
+    return { body: from.body + (to.body - from.body) * smooth, pose: from.pose.toward(to.pose, smooth) };
+  }
+
+  #followAim(milliseconds) {
+    const isEasing = this.#aim.time < AIM_TIME;
+
+    this.#aim.time += milliseconds;
+
+    const aimed = this.#aimed();
+
+    this.turned = aimed.body;
+    this.actor.aim = aimed.pose;
+
+    return isEasing;
   }
 
   turn(heading, limit = Infinity) {
@@ -104,7 +152,8 @@ export class TokenPicture {
     else if (isIdle) this.#body = this.actor.animate("idle", { speedLocked: true });
     else if (this.#body?.state.activity === 1) this.#body.stop();
 
-    const isMoving = walking || isIdle || this.actor.acting || this.#body?.state.activity === 1;
+    const isAiming = this.#followAim(milliseconds) || this.#aim.to !== NO_AIM;
+    const isMoving = walking || isIdle || isAiming || this.actor.acting || this.#body?.state.activity === 1;
     const { marks, finished } = this.actor.update(milliseconds, walking ? this.actor.slicesFor(distance) : undefined);
 
     this.figure.land(0, piece => !this.#carried.some(id => piece.path.includes(id)));

@@ -2,7 +2,7 @@
   A Draft is a shape while it is being built. The JSON is what counts, and the shape
   is made from it again after every change.
 
-  Its items are everything which is placed in it: shapes, sockets, plugs and insignia.
+  Its items are everything which is placed in it: shapes, sockets, plugs and decals.
   Each has an id. In the file only shapes have one, so those of the others are made up
   here, and are left out when it is written.
 
@@ -30,8 +30,8 @@ import { BUILTINS, isSide, Rig, Transform, uuid } from "../../../shape-core/src/
 import { History } from "./history.js";
 import { freeName, otherSide } from "./names.js";
 
-const LISTS = { shape: "shapes", socket: "sockets", plug: "plugs", insignia: "insignia" };
-const THINGS = { shape: "parts", socket: "sockets", plug: "plugs", insignia: "insignia" };
+const LISTS = { shape: "shapes", socket: "sockets", plug: "plugs", decals: "decals" };
+const THINGS = { shape: "parts", socket: "sockets", plug: "plugs", decals: "decals" };
 const KINDS = Object.keys(LISTS);
 const MIRROR = Transform.sized([-1, 1, 1]);
 const STILL = [0, 0, 0];
@@ -502,6 +502,8 @@ export class Draft {
 }
 
 function withIds(json) {
+  json.decals ??= json.insignia ?? [];
+  delete json.insignia;
   for (const list of Object.values(LISTS)) {
     for (const value of json[list] ?? []) value.id ??= uuid();
   }
@@ -510,7 +512,7 @@ function withIds(json) {
 }
 
 function mirrorValues({ kind, value }) {
-  if (kind === "insignia") value.turn = tidy(-(value.turn ?? 0));
+  if (kind === "decals") value.turn = tidy(-(value.turn ?? 0));
   if (kind !== "socket" || !value.movement?.name) return;
 
   const { name, turn = {}, move = {} } = value.movement;

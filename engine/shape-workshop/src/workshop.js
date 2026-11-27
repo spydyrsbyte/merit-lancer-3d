@@ -38,6 +38,7 @@ import { rotationOn } from "./view/surface.js";
 import { Swatches } from "./view/swatches.js";
 import { View } from "./view/view.js";
 import { AnimationWindow } from "./windows/animation.js";
+import { DecalWindow } from "./windows/decals.js";
 import { Materials } from "./windows/materials.js";
 import { Poses } from "./windows/poses.js";
 import { RulesWindow } from "./windows/rules.js";
@@ -340,6 +341,18 @@ export class Workshop {
     this.#layout.say(text);
   }
 
+  async exportFile(name, data, type) {
+    if (this.#host.exportFile) return this.#host.exportFile(name, data);
+
+    const url = URL.createObjectURL(new Blob([data], { type }));
+    const link = Object.assign(document.createElement("a"), { href: url, download: name });
+
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+    return name;
+  }
+
   showFigure() {
     this.selection.keep(this.draft);
     this.#markers = markersOf(this.draft);
@@ -389,6 +402,7 @@ export class Workshop {
     const parent = this.#layout.windows;
 
     return {
+      decals: new DecalWindow(parent, this),
       materials: new Materials(parent, this),
       shapes: new Shapes(parent, this),
       poses: new Poses(parent, this),

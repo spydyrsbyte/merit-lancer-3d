@@ -1,5 +1,5 @@
 /*
-  A Spot is a place in a shape: a socket, a plug, or insignia. With "at" it is on a
+  A Spot is a place in a shape: a socket, a plug, or a decal place. With "at" it is on a
   side or a socket of something in the shape, as a placement can be, and follows it.
 */
 

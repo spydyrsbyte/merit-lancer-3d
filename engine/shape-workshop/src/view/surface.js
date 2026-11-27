@@ -1,7 +1,7 @@
 /*
   The Surface under the pointer, as a place to attach to: the side which looks that
   way, and where on it. What is put there is not turned, except for things which point
-  somewhere: a socket points away from what it is on, a plug into it, and insignia face
+  somewhere: a socket points away from what it is on, a plug into it, and decals face
   away.
 */
 
@@ -41,7 +41,7 @@ export function surfaceAt(draft, view, at, step = 0) {
 }
 
 export function rotationOn(kind, side) {
-  if (kind === "insignia") return [...FACING[side]];
+  if (kind === "decals") return [...FACING[side]];
   if (kind === "socket") return [...OUTWARD[side]];
   if (kind === "plug") return [...OUTWARD[OPPOSITE[side]]];
 

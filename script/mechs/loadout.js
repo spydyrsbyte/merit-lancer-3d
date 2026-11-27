@@ -13,8 +13,13 @@
   placements, which animations and glows can name.
 
   It has the frame's own animations, so a mech walks the way its frame does.
+
+  How gear sits is its place, as the Mech Designer sets it: its size, how it is turned,
+  tilted and rolled on its mount, whether it is flipped, and which colors of the mech its
+  own colors are. Gear which is taken off is not on the mech.
 */
 
+import { applyInsignia } from "./decals.js";
 import { Shape } from "../../engine/shape-core/src/index.js";
 import { sizeFor, STAND_INS } from "../items/catalog.js";
 
@@ -43,12 +48,14 @@ export class Loadout {
   async shape(key, name, mech, gear) {
     const frame = await this.#library.load(mech.csgid);
 
+    await applyInsignia(frame, mech.insignia);
+
     this.#sockets = frame.skeleton.sockets;
 
     const placements = [{ id: idOf(key, "frame"), use: frame.id, name: frame.name }];
     const ordered = [...gear].sort(bySize);
 
-    for (const one of ordered) {
+    for (const one of ordered.filter(gear => !gear.place?.off)) {
       const placement = await this.#place(key, one);
 
       if (placement) placements.push(placement);
@@ -94,6 +101,25 @@ export class Loadout {
 
     return ranked.sort((a, b) => a.rank - b.rank)[0]?.open ?? null;
   }
+}
+
+function fitOf(gear, shape) {
+  const { size = 1, turn = 0, tilt = 0, roll = 0, flip = false, paint = {} } = gear.place ?? {};
+  const scale = (STAND_IN_IDS.has(shape.id) ? sizeFor(gear) : 1) * size;
+  const fit = {};
+
+  if (scale !== 1) fit.size = [scale, scale, scale];
+  if (turn || tilt || roll) fit.rotation = [tilt, roll, turn];
+  if (flip) fit.flip = true;
+  if (Object.keys(paint).length) fit.paint = { ...paint };
+
+  return fit;
+}
+
+export function mountsFor(frame, gear, shape) {
+  const isStandIn = STAND_IN_IDS.has(shape.id);
+
+  return frame.skeleton.sockets.filter(open => takes(open.socket, gear, shape) || (isStandIn && fits(open.socket, shape)));
 }
 
 export function freeSockets(shape, gear) {

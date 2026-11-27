@@ -6,11 +6,15 @@
   up as a figure of its own. It is made anew when the items of the actor change, apart
   from changes to meshes only, which are what drawing it wrote.
 
-  A mech walks as far as its token moved since the last frame, and turns to where the
+  The token of a mech moves at the speed of the world's setting. A mech walks as far as
+  its token moved since the last frame, at the walk pace of the world, and turns to where the
   token faces, as fast as a token turns. LANCER locks the rotation of new actors to keep
   portraits upright, but a mech still has a facing, so by default it turns anyway.
 
   One token width is 100 units of a shape, times the size of the token.
+
+  While the Mech Designer has changes which are not saved, the tokens of its mech show
+  them, for this user only: a preview takes the place of the assembly.
 */
 
 import { ensureItems } from "../items/ensure.js";
@@ -28,6 +32,7 @@ const LONGEST_STEP = 100;
 class TokenMechs {
   #pictures = new Map();
   #assemblies = new Map();
+  #previews = new Map();
   #places = new WeakMap();
   #making = new Map();
   #waited = 0;
@@ -41,6 +46,7 @@ class TokenMechs {
       return loaded;
     });
 
+    Hooks.once("setup", () => this.#walkingPace());
     Hooks.on("drawToken", token => this.refresh(token));
     Hooks.on("refreshToken", token => this.#apply(token));
     Hooks.on("destroyToken", token => this.#detach(token));
@@ -57,6 +63,16 @@ class TokenMechs {
     });
   }
 
+  #walkingPace() {
+    const mechs = this;
+
+    CONFIG.Token.objectClass = class MechToken extends CONFIG.Token.objectClass {
+      _getAnimationMovementSpeed(options) {
+        return mechs.has(this) ? setting("speed") : super._getAnimationMovementSpeed(options);
+      }
+    };
+  }
+
   get motion() {
     return this.#motion;
   }
@@ -67,6 +83,16 @@ class TokenMechs {
 
   pictureOf(token) {
     return this.#pictures.get(token) ?? null;
+  }
+
+  setPreview(actor, preview) {
+    if (!actor) return;
+
+    if (preview) this.#previews.set(actor, preview);
+    else if (this.#previews.has(actor)) this.#previews.delete(actor);
+    else return;
+
+    this.refreshAll(token => token.actor === actor);
   }
 
   assemblyOf(actor) {
@@ -117,7 +143,7 @@ class TokenMechs {
     this.#pictures.set(token, picture);
     this.#apply(token);
 
-    if (responsible(token.actor)) keepPicture(picture.assembly, token.document).catch(error => console.warn(`${ID} |`, error));
+    if (responsible(token.actor) && !picture.assembly.isPreview) keepPicture(picture.assembly, token.document).catch(error => console.warn(`${ID} |`, error));
   }
 
   async #pictureFor(token) {
@@ -136,6 +162,7 @@ class TokenMechs {
   }
 
   #assembly(actor) {
+    if (this.#previews.has(actor)) return Promise.resolve(this.#previews.get(actor));
     if (!this.#assemblies.has(actor)) this.#assemblies.set(actor, Assembly.of(actor));
 
     return this.#assemblies.get(actor);
@@ -159,6 +186,10 @@ class TokenMechs {
     if (options?.[ID]?.meshes) return;
 
     this.forget(actor);
+  }
+
+  headingOf(token) {
+    return this.#heading(token);
   }
 
   #heading({ document }) {
@@ -242,11 +273,11 @@ class TokenMechs {
     for (const [token, picture] of this.#pictures) {
       const distance = this.#moved(token);
 
-      if (motion !== "off") picture.move(passed, distance, motion === "always");
+      if (motion !== "off") picture.move(passed, distance * setting("walkPace"), motion === "always");
 
       const limit = token.document.lockRotation ? TURN_SPEED * passed : Infinity;
 
-      picture.turn(this.#heading(token), limit);
+      picture.turn(this.#heading(token) + picture.turned, limit);
 
       if (!picture.dirty || !token.mesh?.visible) continue;
 

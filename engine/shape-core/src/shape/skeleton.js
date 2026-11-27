@@ -50,8 +50,9 @@ export class Skeleton {
     this.lost = [];
     this.idle = [];
     this.places = new Map();
+    this.decals = [];
 
-    this.#build([...shape.sockets, ...shape.insignia, ...shape.plugs], shape.parts);
+    this.#build([...shape.sockets, ...shape.decals, ...shape.plugs], shape.parts);
   }
 
   get sockets() {
@@ -137,6 +138,8 @@ export class Skeleton {
 
     this.places.set(spot, { owner, ground, transform: stance, hidden });
 
+    if ("art" in spot && !hidden) this.decals.push({ decal: spot, owner, transform: stance });
+
     if (!(spot instanceof Socket)) return;
 
     this.#opens.push({ socket: spot, side: "", name: spot.name, path: "", owner, stance, movement: spot.movement, suffix, hidden });
@@ -207,6 +210,10 @@ export class Skeleton {
       copies.set(limb, copy);
 
       if (!hidden) this.limbs.push(copy);
+    }
+
+    for (const mark of inner.decals) {
+      if (!hidden) this.decals.push({ ...mark, owner: mark.owner ? copies.get(mark.owner) : owner, transform: mark.owner ? mark.transform : transform.times(mark.transform) });
     }
 
     for (const open of inner.sockets) {

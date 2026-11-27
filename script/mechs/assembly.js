@@ -89,18 +89,18 @@ export function responsible(document) {
   return first === game.user;
 }
 
-async function describe(actor, items) {
+export async function describe(actor, items) {
   const lancer = gearOf(actor);
   const described = [];
 
   for (const item of items) {
-    const { id: lid, csgid, at } = item.system.mechdata;
+    const { id: lid, csgid, at, place } = item.system.mechdata;
     const index = lancer.findIndex(one => one.lid === lid);
     const known = index >= 0 ? lancer.splice(index, 1)[0] : null;
     const entry = known ? null : await entryOf(csgid);
 
     described.push({
-      item: item.id, lid, csgid, at,
+      item: item.id, lid, csgid, at, place,
       kind: kindOf(item),
       name: item.name,
       size: known?.size ?? entry?.sizes?.[0] ?? "",

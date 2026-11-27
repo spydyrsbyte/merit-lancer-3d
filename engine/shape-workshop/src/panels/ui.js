@@ -50,9 +50,9 @@ export function field(label, ...controls) {
   return el("label", { className: "field" }, el("span", { textContent: label }), ...controls);
 }
 
-export function textField(label, value, { key = label, done = nothing, list, hint, title = "" } = {}) {
+export function textField(label, value, { key = label, done = nothing, list, hint, title = "", maxLength = 100 } = {}) {
   const input = el("input", {
-    type: "text", value: value ?? "", placeholder: hint ?? "", maxLength: 100, title, spellcheck: false,
+    type: "text", value: value ?? "", placeholder: hint ?? "", maxLength, title, spellcheck: false,
     data: { key },
     on: { change: event => done(event.target.value.trim()) }
   });

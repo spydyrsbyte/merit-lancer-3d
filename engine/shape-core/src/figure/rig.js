@@ -24,6 +24,10 @@ export class Rig {
     this.bend(UNBENT);
   }
 
+  get decals() {
+    return this.skeleton.decals.map(mark => ({ ...mark, piece: this.#made.get(mark.owner), world: this.#made.get(mark.owner).base.times(mark.transform) }));
+  }
+
   get sockets() {
     return this.skeleton.sockets.map(open => ({
       name: open.name,

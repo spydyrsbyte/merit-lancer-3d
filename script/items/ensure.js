@@ -1,7 +1,8 @@
 /*
   Keeps the items of the module on an actor in step with what it has in LANCER, so it
   is mostly automatic: a mech item for its frame, and a gear item for each weapon,
-  system and mod, by their LANCER ids.
+  system and mod, by their LANCER ids. Gear put on by hand in the Mech Designer is left
+  alone.
 
   A missing one is made from the first shape which stands for it (see catalog.js). One
   whose LANCER item is gone is removed. A mech item which stands for another frame than
@@ -34,7 +35,7 @@ async function bringInStep(actor) {
   const lid = frame?.system?.lid ?? "";
   const mech = mechItemOf(actor);
   const wanted = gearOf(actor);
-  const extra = [...gearItemsOf(actor)];
+  const extra = gearItemsOf(actor).filter(item => !item.getFlag(ID, "byHand"));
   const missing = [];
 
   for (const gear of wanted) {

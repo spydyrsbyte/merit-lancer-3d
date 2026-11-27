@@ -94,6 +94,14 @@
       "turnLocked": {
         "Name": "Turn tokens with locked rotation",
         "Hint": "LANCER locks the rotation of new actors to keep portraits upright. A mech still faces where its token does."
+      },
+      "walkPace": {
+        "Name": "Walk animation speed",
+        "Hint": "How fast mechs step for the ground they cover. 1 is exactly as their feet need; lower is fewer, longer steps, which looks better although the feet slide a little."
+      },
+      "speed": {
+        "Name": "Speed of mechs",
+        "Hint": "How many spaces per second the token of a mech moves. Foundry moves tokens at 6."
       }
     },
     "Token": {
@@ -115,6 +123,149 @@
         "none": "No ring"
       },
       "Download": "Download"
+    },
+    "Designer": {
+      "NoMech": "Only a mech on an actor can be designed.",
+      "Tab": {
+        "frame": "Frame",
+        "equip": "Equip",
+        "paint": "Paint",
+        "insignia": "Insignia",
+        "pose": "Pose"
+      },
+      "View": {
+        "angled": "Angled",
+        "front": "Front",
+        "side": "Side",
+        "top": "Top"
+      },
+      "Undo": "Undo (Ctrl+Z)",
+      "Redo": "Redo (Ctrl+Y)",
+      "ResetLook": "Frame's look",
+      "ResetLookHint": "Back to the colors of the frame, without insignia. What is equipped stays.",
+      "Unsaved": "Unsaved changes",
+      "SavedStatus": "Saved",
+      "Save": "Save",
+      "Discard": "Discard",
+      "Cancel": "Cancel",
+      "Saved": "Saved the mech of {name}.",
+      "SaveFailed": "The mech could not be saved: {error}",
+      "FrameHint": "Choose a variant of your LANCER frame. What you have equipped, painted and marked comes along where it fits.",
+      "NoFrameVariants": "No variants are available for this actor's LANCER frame.",
+      "YourFrame": "Your frame",
+      "NoFolder": "Not in a folder",
+      "EquipHint": "Drag something onto the mech, or click it to put it in its usual place. Drag it off the mech to take it off.",
+      "NoPoints": "This frame has no mount points, so nothing can be equipped.",
+      "OnMech": "On the mech",
+      "FromSheet": "From your sheet",
+      "NoPart": "No part yet for: {names}. You can use any other one in its place.",
+      "Kind": {
+        "weapon": "Weapon",
+        "system": "System",
+        "mod": "Mod"
+      },
+      "Size": "Size",
+      "Turn": {
+        "turn": "Turn left or right",
+        "tilt": "Tilt up or down",
+        "roll": "Roll"
+      },
+      "Flip": "Flip",
+      "Straighten": "Straighten",
+      "TakeOff": "Take off",
+      "NoPoint": "There is no free mount point for {name}.",
+      "Swap": "{point}: trade places with {name}",
+      "Same": "{name} (the same)",
+      "Own": "{name} (its own)",
+      "PaintHint": "Click something on the mech to find its color.",
+      "Schemes": "Color schemes",
+      "Scheme": {
+        "sandstone": "Sandstone",
+        "olive": "Olive",
+        "arctic": "Arctic",
+        "navy": "Navy",
+        "rust": "Rust",
+        "crimson": "Crimson",
+        "jungle": "Jungle",
+        "violet": "Violet",
+        "graphite": "Graphite",
+        "hazard": "Hazard",
+        "ivory": "Ivory",
+        "teal": "Teal"
+      },
+      "Colors": "Colors",
+      "MoreColors": "More colors",
+      "Color": "Color",
+      "ColorNumber": "Color {number}",
+      "Finish": "Finish",
+      "Pattern": {
+        "solid": "Solid",
+        "panels": "Panels",
+        "rivets": "Rivets",
+        "brushed": "Brushed",
+        "camo": "Camo",
+        "stripes": "Stripes",
+        "hex": "Hex",
+        "grille": "Grille"
+      },
+      "ResetPaint": "Back to the color of the frame",
+      "InsigniaHint": "Choose a place, here or on the mech, and what goes there.",
+      "NoLocations": "This frame has no insignia locations.",
+      "InsigniaHelp": "Insignia are projected onto the frame as decals.",
+      "Location": {
+        "Label": "Location",
+        "Hint": "Its name is the same on every frame, so that mechs of one unit have the same insignia at the same place. A mech has each location once.",
+        "PlaceHint": "Shift+click the mech to put the location there, or hold Shift and drag it over the surface. It shows its name here.",
+        "Turn": "Turn",
+        "TurnHint": "Turns what is on it clockwise, in degrees",
+        "chest": "Chest",
+        "back": "Back",
+        "head": "Head",
+        "left-shoulder": "Left shoulder",
+        "right-shoulder": "Right shoulder",
+        "left-arm": "Left arm",
+        "right-arm": "Right arm",
+        "left-leg": "Left leg",
+        "right-leg": "Right leg",
+        "left-side": "Left side",
+        "right-side": "Right side"
+      },
+      "Insignia": {
+        "Shows": "Shows",
+        "Kind": {
+          "none": "Nothing",
+          "emblem": "An emblem",
+          "text": "A number or text",
+          "image": "An image"
+        },
+        "Text": "Number or text",
+        "Font": "Font",
+        "Browse": "Choose",
+        "Recolor": "In one color",
+        "Color": "Color",
+        "Opacity": "Opacity",
+        "Wear": "Wear",
+        "Glow": "Glow"
+      },
+      "Emblem": {
+        "star": "Star",
+        "skull": "Skull",
+        "chevrons": "Chevrons",
+        "arrow": "Arrow",
+        "roundel": "Roundel",
+        "cross": "Cross",
+        "bolt": "Bolt",
+        "wing": "Wing",
+        "claws": "Claw marks",
+        "target": "Target",
+        "hexagon": "Hexagon",
+        "warning": "Warning sign",
+        "hazard": "Hazard stripes",
+        "band": "Band",
+        "barcode": "Barcode"
+      },
+      "AsBuilt": "As built",
+      "PoseHint": "Choose how the mech stands."
     }
   }
 }

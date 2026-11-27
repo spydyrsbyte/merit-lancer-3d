@@ -21,7 +21,7 @@ const SAME = [1, 1, 1];
 const STILL = [0, 0, 0];
 const STEP = 1;
 const BEND = { turn: { x: [-45, 45] } };
-const INSIGNIA_SIZE = [14, 4, 14];
+const DECAL_SIZE = [14, 4, 14];
 
 export const BUILTIN_NAMES = {
   box: "Box", wedge: "Wedge", taper: "Taper", hex: "Hex block", cylinder: "Cylinder", cone: "Cone", sphere: "Sphere"
@@ -80,7 +80,7 @@ export class Placer {
     if (kind === "shape") return this.#placeShape(landing);
     if (kind === "joint") return this.#draft.add("socket", { name: kind, movement: { name: kind, ...structuredClone(BEND) }, ...landing });
     if (kind === "socket") return this.#draft.add("socket", { name: kind, movement: {}, ...landing });
-    if (kind === "insignia") return this.#draft.add("insignia", { name: kind, size: [...INSIGNIA_SIZE], turn: 0, ...landing });
+    if (kind === "decals") return this.#draft.add("decals", { name: kind, size: [...DECAL_SIZE], turn: 0, ...landing });
 
     return this.#draft.add("plug", { name: kind, ...landing });
   }
