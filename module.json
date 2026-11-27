@@ -2,7 +2,7 @@
   "id": "merit-lancer-3d",
   "title": "MERIT LANCER 3D",
   "description": "3D mechs as tokens, built from what each mech has in LANCER, which walk, turn and act. It uses CSG Bash, a custom CSG kit bashing engine that will be open source first quarter of 2027.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "url": "https://github.com/spydyrsbyte/merit-lancer-3d",
   "manifest": "https://raw.githubusercontent.com/spydyrsbyte/merit-lancer-3d/main/module.json",
   "download": "https://github.com/spydyrsbyte/merit-lancer-3d/releases/latest/download/merit-lancer-3d.zip",
