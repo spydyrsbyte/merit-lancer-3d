@@ -81,6 +81,8 @@ export class ItemSheet3D extends foundry.applications.sheets.ItemSheetV2 {
     }
 
     this.#designer?.close();
+    this.#designer = null;
+    this.#panels.detail?.replaceChildren();
 
     if (this.#workshop && !options.force) {
       const mayClose = await this.#workshop.desk.closeAll();

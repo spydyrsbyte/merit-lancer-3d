@@ -680,6 +680,8 @@ export class MechDesigner {
   }
 
   #clickMech(at) {
+    if (!this.#view) return;
+
     const hit = this.#view.pick(at);
 
     if (this.#tab === "equip") {
@@ -703,7 +705,7 @@ export class MechDesigner {
   }
 
   #grabMech(at, event) {
-    if (this.#tab !== "equip") return null;
+    if (this.#tab !== "equip" || !this.#view) return null;
 
     const one = this.#gearAt(this.#view.pick(at));
 
@@ -803,8 +805,12 @@ export class MechDesigner {
     this.#stopDrag();
 
     if (!isMoving) {
-      if (isOnMech) this.#pickEntry(what.key);
-      else this.#equip(what, "");
+      if (isOnMech) {
+        this.#entry = what.key;
+        this.#render();
+      } else {
+        this.#equip(what, "");
+      }
 
       return;
     }
